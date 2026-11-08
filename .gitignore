@@ -22,4 +22,9 @@ datasets/sciencedirect/master/
 datasets/sciencedirect/enriched/
 storage/sciencedirect/
 scratch/
+datasets/sciencedirect/retrieval/*.sqlite
+datasets/sciencedirect/retrieval/*.jsonl
+datasets/sciencedirect/benchmark/embeddings/
+reports/test_report.*
+
 

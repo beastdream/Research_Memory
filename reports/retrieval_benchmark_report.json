@@ -1,0 +1,194 @@
+{
+  "metadata": {
+    "timestamp": "2026-11-08T09:42:59.940129+00:00",
+    "device": "cuda",
+    "eval_scope": "candidate_pool",
+    "pool_size": 1000,
+    "num_papers": 126,
+    "num_corpus_chunks": 1000,
+    "num_queries": 125,
+    "num_topics": 5,
+    "num_qrels": 691,
+    "models_tested": [
+      "BAAI/bge-base-en-v1.5",
+      "allenai/specter2_base",
+      "facebook/contriever"
+    ]
+  },
+  "models": [
+    {
+      "model_name": "BAAI/bge-base-en-v1.5",
+      "macro_metrics": {
+        "recall_at_5": 0.6984761904761904,
+        "recall_at_10": 0.8469142857142857,
+        "recall_at_20": 0.8756571428571428,
+        "mrr_at_10": 0.8859333333333334,
+        "ndcg_at_10": 0.7296653488810438
+      },
+      "topic_metrics": {
+        "AI Agents and Long-Term Memory": {
+          "num_queries": 25,
+          "recall_at_5": 0.6157142857142858,
+          "recall_at_10": 0.7557142857142857,
+          "recall_at_20": 0.7714285714285714,
+          "mrr_at_10": 0.7706666666666666,
+          "ndcg_at_10": 0.6757993058759433
+        },
+        "RAG and Information Retrieval": {
+          "num_queries": 25,
+          "recall_at_5": 0.614,
+          "recall_at_10": 0.8219047619047619,
+          "recall_at_20": 0.8819047619047619,
+          "mrr_at_10": 0.885,
+          "ndcg_at_10": 0.6732052410423414
+        },
+        "Large Language Models": {
+          "num_queries": 25,
+          "recall_at_5": 0.7031428571428573,
+          "recall_at_10": 0.8345714285714285,
+          "recall_at_20": 0.8797142857142858,
+          "mrr_at_10": 0.89,
+          "ndcg_at_10": 0.72800948009791
+        },
+        "Hallucination and Faithfulness": {
+          "num_queries": 25,
+          "recall_at_5": 0.7033333333333335,
+          "recall_at_10": 0.8623809523809524,
+          "recall_at_20": 0.8852380952380952,
+          "mrr_at_10": 0.924,
+          "ndcg_at_10": 0.7380508065999501
+        },
+        "Scientific NLP and QA": {
+          "num_queries": 25,
+          "recall_at_5": 0.8561904761904762,
+          "recall_at_10": 0.96,
+          "recall_at_20": 0.96,
+          "mrr_at_10": 0.96,
+          "ndcg_at_10": 0.8332619107890745
+        }
+      },
+      "timing": {
+        "corpus_encoding_seconds": 231.61,
+        "query_encoding_seconds": 3.008,
+        "retrieval_seconds": 0.0121,
+        "total_eval_seconds": 234.7
+      }
+    },
+    {
+      "model_name": "allenai/specter2_base",
+      "macro_metrics": {
+        "recall_at_5": 0.32215238095238097,
+        "recall_at_10": 0.4301523809523809,
+        "recall_at_20": 0.5520380952380952,
+        "mrr_at_10": 0.6401301587301588,
+        "ndcg_at_10": 0.3625106110462769
+      },
+      "topic_metrics": {
+        "AI Agents and Long-Term Memory": {
+          "num_queries": 25,
+          "recall_at_5": 0.2480952380952381,
+          "recall_at_10": 0.33476190476190476,
+          "recall_at_20": 0.4863809523809524,
+          "mrr_at_10": 0.6301587301587301,
+          "ndcg_at_10": 0.3034999477370948
+        },
+        "RAG and Information Retrieval": {
+          "num_queries": 25,
+          "recall_at_5": 0.2774285714285714,
+          "recall_at_10": 0.3683809523809524,
+          "recall_at_20": 0.5143809523809524,
+          "mrr_at_10": 0.5906666666666667,
+          "ndcg_at_10": 0.3192132838386881
+        },
+        "Large Language Models": {
+          "num_queries": 25,
+          "recall_at_5": 0.36257142857142854,
+          "recall_at_10": 0.46542857142857147,
+          "recall_at_20": 0.5605714285714286,
+          "mrr_at_10": 0.66,
+          "ndcg_at_10": 0.4098565598553132
+        },
+        "Hallucination and Faithfulness": {
+          "num_queries": 25,
+          "recall_at_5": 0.24885714285714286,
+          "recall_at_10": 0.35647619047619045,
+          "recall_at_20": 0.47600000000000003,
+          "mrr_at_10": 0.5418253968253969,
+          "ndcg_at_10": 0.29956751175390495
+        },
+        "Scientific NLP and QA": {
+          "num_queries": 25,
+          "recall_at_5": 0.4738095238095238,
+          "recall_at_10": 0.6257142857142857,
+          "recall_at_20": 0.7228571428571429,
+          "mrr_at_10": 0.778,
+          "ndcg_at_10": 0.4804157520463832
+        }
+      },
+      "timing": {
+        "corpus_encoding_seconds": 233.71,
+        "query_encoding_seconds": 2.54,
+        "retrieval_seconds": 0.0184,
+        "total_eval_seconds": 236.31
+      }
+    },
+    {
+      "model_name": "facebook/contriever",
+      "macro_metrics": {
+        "recall_at_5": 0.4474666666666666,
+        "recall_at_10": 0.5901904761904762,
+        "recall_at_20": 0.7066857142857144,
+        "mrr_at_10": 0.7615174603174601,
+        "ndcg_at_10": 0.49214621441689577
+      },
+      "topic_metrics": {
+        "AI Agents and Long-Term Memory": {
+          "num_queries": 25,
+          "recall_at_5": 0.4203809523809523,
+          "recall_at_10": 0.5521904761904762,
+          "recall_at_20": 0.6631428571428571,
+          "mrr_at_10": 0.8096666666666666,
+          "ndcg_at_10": 0.4623567952622553
+        },
+        "RAG and Information Retrieval": {
+          "num_queries": 25,
+          "recall_at_5": 0.3927619047619047,
+          "recall_at_10": 0.49942857142857144,
+          "recall_at_20": 0.6592380952380953,
+          "mrr_at_10": 0.7025396825396826,
+          "ndcg_at_10": 0.4159597587734522
+        },
+        "Large Language Models": {
+          "num_queries": 25,
+          "recall_at_5": 0.4368571428571429,
+          "recall_at_10": 0.6248571428571429,
+          "recall_at_20": 0.7385714285714287,
+          "mrr_at_10": 0.6573333333333332,
+          "ndcg_at_10": 0.49973564252199004
+        },
+        "Hallucination and Faithfulness": {
+          "num_queries": 25,
+          "recall_at_5": 0.37114285714285716,
+          "recall_at_10": 0.5011428571428571,
+          "recall_at_20": 0.6186666666666666,
+          "mrr_at_10": 0.7473333333333333,
+          "ndcg_at_10": 0.43132376279167195
+        },
+        "Scientific NLP and QA": {
+          "num_queries": 25,
+          "recall_at_5": 0.6161904761904762,
+          "recall_at_10": 0.7733333333333333,
+          "recall_at_20": 0.8538095238095238,
+          "mrr_at_10": 0.8907142857142857,
+          "ndcg_at_10": 0.6513551127351093
+        }
+      },
+      "timing": {
+        "corpus_encoding_seconds": 254.78,
+        "query_encoding_seconds": 2.63,
+        "retrieval_seconds": 0.0109,
+        "total_eval_seconds": 257.47
+      }
+    }
+  ]
+}
