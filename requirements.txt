@@ -1,0 +1,10 @@
+huggingface_hub>=0.34,<2
+pyarrow>=17,<24
+pymupdf>=1.24,<2
+requests>=2.32,<3
+pytest>=8,<10
+psycopg[binary]>=3.2,<4
+python-dotenv>=1.0,<2
+jsonschema>=4.23,<5
+streamlit>=1.40,<2
+tiktoken>=0.8,<1

@@ -1,0 +1,1622 @@
+{
+  "doi": "",
+  "qas": [],
+  "url": "https://arxiv.org/abs/2305.10250v3",
+  "year": 2023,
+  "split": "corpus",
+  "title": "MemoryBank: Enhancing Large Language Models with Long-Term Memory",
+  "source": "arxiv",
+  "authors": [
+    "Wanjun Zhong",
+    "Lianghong Guo",
+    "Qiqi Gao",
+    "He Ye",
+    "Yanlin Wang"
+  ],
+  "quality": {
+    "pdf_valid": true,
+    "qa_status": "not_annotated",
+    "limitations": [
+      "Reading order, section boundaries, equations and object completeness require review.",
+      "No OCR or visual chart interpretation performed."
+    ],
+    "tables_status": "partial",
+    "figures_status": "partial",
+    "equations_status": "pending",
+    "full_text_status": "partial",
+    "structure_status": "heuristic",
+    "references_status": "partial",
+    "pdf_checksum_matches": true,
+    "unmapped_glyph_count": 0,
+    "research_metadata_status": "pending"
+  },
+  "abstract": "Revolutionary advancements in Large Language Models have drastically reshaped our interactions with artificial intelligence systems. Despite this, a notable hindrance remains-the deficiency of a long-term memory mechanism within these models. This shortfall becomes increasingly evident in situations demanding sustained interaction, such as personal companion systems and psychological counseling. Therefore, we propose MemoryBank, a novel memory mechanism tailored for LLMs. MemoryBank enables the models to summon relevant memories, continually evolve through continuous memory updates, comprehend, and adapt to a user personality by synthesizing information from past interactions. To mimic anthropomorphic behaviors and selectively preserve memory, MemoryBank incorporates a memory updating mechanism, inspired by the Ebbinghaus Forgetting Curve theory, which permits the AI to forget and reinforce memory based on time elapsed and the relative significance of the memory, thereby offering a human-like memory mechanism. MemoryBank is versatile in accommodating both closed-source models like ChatGPT and open-source models like ChatGLM. We exemplify application of MemoryBank through the creation of an LLM-based chatbot named SiliconFriend in a long-term AI Companion scenario. Further tuned with psychological dialogs, SiliconFriend displays heightened empathy in its interactions. Experiment involves both qualitative analysis with real-world user dialogs and quantitative analysis with simulated dialogs. In the latter, ChatGPT acts as users with diverse characteristics and generates long-term dialog contexts covering a wide array of topics. The results of our analysis reveal that SiliconFriend, equipped with MemoryBank, exhibits a strong capability for long-term companionship as it can provide emphatic response, recall relevant memories and understand user personality.",
+  "arxiv_id": "2305.10250",
+  "metadata": {
+    "topic_group": "memory",
+    "primary_category": "cs.CL"
+  },
+  "sections": [
+    {
+      "text": "MemoryBank: Enhancing Large Language Models\n                         with Long-Term Memory\n\nWanjun Zhong1, Lianghong Guo1, Qiqi Gao2, He Ye3, Yanlin Wang1\n                                             1 Sun Yat-Sen University 2 Harbin Institute of Technology\n                                                       3 KTH Royal Institute of Technology\n                                 {zhongwj25@mail2, wangylin36@mail}.sysu.edu.com\n                                   2231612405@qq.com, 18b903026@stu.hit.edu.cn2023                                              heye@kth.se\nMay                                            Abstract\n21                        Revolutionary advancements in Large Language Models (LLMs) have drastically\n                             reshaped our interactions with artiﬁcial intelligence (AI) systems, showcasing\n                               impressive performance across an extensive array of tasks. Despite this, a notable\n                               hindrance remains—the deﬁciency of a long-term memory mechanism within these\n                              models. This shortfall becomes increasingly evident in situations demanding sus-\n                                 tained interaction, such as personal companion systems, psychological counseling,\n                           and secretarial assistance. Recognizing the necessity for long-term memory, we[cs.CL]                             propose MemoryBank, a novel memory mechanism tailored for LLMs. Memory-\n                          Bank enables the models to summon relevant memories, continually evolve through\n                              continuous memory updates, comprehend, and adapt to a user’s personality over\n                              time by synthesizing information from previous interactions. To mimic anthropo-\n                            morphic behaviors and selectively preserve memory, MemoryBank incorporates\n                             a memory updating mechanism, inspired by the Ebbinghaus Forgetting Curve\n                                  theory. This mechanism permits the AI to forget and reinforce memory based on\n                              time elapsed and the relative signiﬁcance of the memory, thereby offering a more\n                             human-like memory mechanism and enriched user experience. MemoryBank is\n                                   versatile in accommodating both closed-source models like ChatGPT and open-\n                              source models such as ChatGLM. To validate MemoryBank’s effectiveness, we\n                             exemplify its application through the creation of an LLM-based chatbot named\n                                SiliconFriend in a long-term AI Companion scenario. Further tuned with psycho-\n                                   logical dialog data, SiliconFriend displays heightened empathy and discernment in\n                                           its interactions. Experiment involves both qualitative analysis with real-world user\n                                dialogs and quantitative analysis with simulated dialogs. In the latter, ChatGPTarXiv:2305.10250v3                           acts as multiple users with diverse characteristics and generates long-term dialog\n                                 contexts covering a wide array of topics. The results of our analysis reveal that Sili-\n                               conFriend, equipped with MemoryBank, exhibits a strong capability for long-term\n                            companionship as it can provide emphatic response, recall relevant memories and\n                              understand user personality. This underscores the effectiveness of MemoryBank1.",
+      "heading": "Front matter / unclassified text"
+    },
+    {
+      "text": "The advent of Large Language Models (LLMs) such as ChatGPT (OpenAI, 2022) and GPT-4 (OpenAI,\n                     2023) has led to increasing inﬂuence across various sectors, from education and healthcare to customer\n                        service and entertainment. These powerful AI systems have demonstrated a remarkable ability to\n\n1The materials are released in https://github.com/zhongwanjun/MemoryBank-SiliconFriend. The\n                         corresponding author is Yanlin Wang.\n\nunderstand and generate human-like responses. Despite the remarkable capabilities of LLMs, a\nkey limitation is their lack of long-term memory, an essential aspect of human-like communication,\nparticularly noticeable in scenarios requiring sustained interactions like personal companionship,\npsychological counseling, and secretarial tasks. Long-term memory in AI is vital to maintain\ncontextual understanding, ensure meaningful interactions and understand user behaviors over time.\nFor instance, personal AI companions need to recall past conversations for rapport building. In\npsychological counseling, an AI can provide more effective support with knowledge of the user’s\nhistory and past emotional states. Similarly, secretarial AI requires memory for task management and\npreference recognition. The absence of long-term memory in LLMs hinders their performance and\nuser experience. Therefore, it is essential to develop AI systems with improved memory capabilities\nfor a more seamless and personalized interaction.\n\nTherefore, we introduce MemoryBank, a novel mechanism designed to provide LLMs with the ability\nto retain long-term memory and draw user portraits. MemoryBank enables LLMs to recall historical\ninteractions, continually evolve their understanding of context, and adapt to a user’s personality based\non past interactions, thereby enhancing their performance in long-term interaction scenarios. Inspired\nby the Ebbinghaus Forgetting Curve theory, a well-established psychological principle that describes\nhow the strength of memory decreases over time, MemoryBank further incorporates a dynamic\nmemory mechanism closely mirroring human cognitive process. This mechanism empowers the AI to\nremember, selectively forget, and strengthen memories based on time elapsed, offering more natural\nand engaging user experience. Speciﬁcally, MemoryBank is built on a memory storage with memory\nretrieval and updating mechanism, and ability to summarize past events and users’ personality.\n\nMemoryBank is versatile as it can accommodate both closed-source LLMs like ChatGPT and\nopen-source LLMs like ChatGLM (Zeng et al., 2022) or BELLE (Yunjie Ji & Li, 2023).\n\nTo exemplify the practical implications of MemoryBank, we develop SiliconFriend, an LLM-based\nAI Companion chatbot integrated with this innovative memory mechanism. SiliconFriend is designed\nto retain and reference past interactions, reinforcing the transformative inﬂuence of MemoryBank\nin crafting a more personable AI companion. A distinctive features of SiliconFriend is its tuning\nwith 38k psychological conversations, collected from various online sources, which enables it to\nexhibit empathy, carefulness, and provide useful guidance, making it adept at handling emotionally\ncharged dialogues. Moreover, one of the standout capabilities of SiliconFriend is to understand a\nuser’s personality by summarizing from past interactions, which empowers it to tailor responses to\nthe user’s individual traits, thereby enhancing user experience. Additionally, SiliconFriend supports\nbilingual functionality, catering to users who communicate in English and Chinese. This multi-\nlanguage support broadens its accessibility and usability across different user groups. SiliconFriend\nis implemented with two open-source models, ChatGLM and BELLE, along with one closed-source\nmodel, ChatGPT, showcasing the versatility of MemoryBank in accommodating different LLMs.\n\nTo evaluate the effectiveness of MemoryBank, we conduct evaluations covering both qualitative\nand quantitative analyses, where the former involves real-world user dialogs and the latter employs\nsimulated dialogs. For the quantitative analysis, we create a memory storage consisting of 10 days of\nconversations encompassing a diverse range of topics. These conversations involve 15 virtual users\nwith diverse personalities, for which ChatGPT plays the role of users and generates dialog contexts\naccording to their personalities. Based on this memory storage, we design 194 probing questions\nto assess whether the model could successfully recall pertinent memories and provide appropriate\nresponses. Experiment results showcase the capabilities of SiliconFriend in memory recall, provision\nof empathetic companionship, and understanding of user portraits. These ﬁndings corroborate the\npotential of MemoryBank to signiﬁcantly improve the performance of LLMs in long-term interaction\nscenarios. In this paper, we summarize the key contributions as follows:\n\n• We introduce MemoryBank, a novel human-like long-term memory mechanism, which enables\n   LLMs to store, recall, update memory, and draw user portrait.\n   • We demonstrate the practical applicability of MemoryBank through SiliconFriend, an LLM-\n    based AI companion equipped with MemoryBank and tuned with psychological dialogs. It can\n      recall past memories, provide empathetic companionship, and understand user behaviors.\n   • We show the generalizability of MemoryBank in three key aspects: (1) Accommodation of both\n    open-source and closed-source LLMs; (2) Bilingual ability in both Chinese and English; (3)\n     Applicability with and without memory forgetting mechanism.\n\n2\n\nMemoryBank                                     SiliconFriend\n            Past Conversations            Event Summary                         Meta Prompt\n                                                                                                          Event Summary\n        Conversations on date 04-28:            Book and gifts recommendation\n                                                     Experience of visiting parks       Memory                     User Portrait\n                  …              Improving drawing skills          Augmented                Relevant Memory\n         Conversations on date 04-29:                                   Prompt\n                                       User Portrait                  …                                                          History                                                  open-minded, curious,\n         …                         and receptive to advice                       Tomorrow is my GF s’ birthday\n\nMemory Storage                                               You should prepare gifts …\n                                                 …\n\nMemory Strength                     Ebbinghaus                        Query                 Send\n                              Updating                                Forgetting Curve\n                                                                         Do you remember the gifts she like?\n                                                       Memory\n                     Memory Updating                              Retrieval\n\nFigure 1: Overview of MemoryBank. The memory storage (§ 2.1) stores past conversations, summa-\nrized events and user portraits, while the memory updating mechanism (§ 2.3) updates the memory\nstorage. Memory retrieval (§ 2.2) recall relevant memory. SiliconFriend (§ 3) serves as an LLM-based\nAI companion augmented with MemoryBank.",
+      "heading": "1  Introduction"
+    },
+    {
+      "text": "In this section, we provide a detailed description of MemoryBank, our novel memory mechanism\ndesigned for LLMs. As shown in Fig. 1, MemoryBank is a uniﬁed mechanism structured around three\ncentral pillars: (1) a memory storage (§ 2.1) serving as the primary data repository, (2) a memory\nretriever (§ 2.2) for context-speciﬁc memory recollection, and (3) a memory updater (§ 2.3) drawing\ninspiration from the Ebbinghaus Forgetting Curve theory, a time-tested psychological principle\npertaining to memory retention and forgetting.",
+      "heading": "2  MemoryBank: A Novel Memory Mechanism Tailored for LLMs"
+    },
+    {
+      "text": "Memory storage, the warehouse of MemoryBank, is a robust data repository holding a meticulous\narray of information. As shown in Fig.  1, it stores daily conversations records, summaries of\npast events, and evolving assessments of user personalities, thereby constructing a dynamic and\nmulti-layered memory landscape.\n\nIn-Depth Memory Storage:  MemoryBank’s storage system captures the richness of AI-user\ninteractions by recording multi-turn conversations in a detailed, chronological fashion. Each piece of\ndialogue is stored with timestamps, creating an ordered narrative of past interactions. This detailed\nrecord not only aids in precise memory retrieval but also facilitates the memory updating process\nafterwards, offering a detailed index of conversational history.\n\nHierarchical Event Summary:  Reﬂecting the intricacies of human memory, MemoryBank goes\nbeyond mere detailed storage.  It processes and distills conversations into a high-level summary\nof daily events, much like how humans remember key aspects of their experiences. We condense\nverbose dialogues into a concise daily event summary, which is further synthesized into a global\nsummary. This process results in a hierarchical memory structure, providing a bird’s eye view of past\ninteractions and signiﬁcant events. Speciﬁcally, taken previous daily conversations or daily events as\ninput, we ask the LLMs to summarize daily events or global events with the prompt “Summarize the\nevents and key information in the content [dialog/events]”.\n\nDynamic Personality Understanding:  MemoryBank focuses on user personality understanding.\nIt continuously assesses and updates these understandings with the long-term interactions and creates\ndaily personality insights. These insights are further aggregated to form a global understanding of the\nuser’s personality. This multi-tiered approach results in an AI companion that learns, adapts, and\ntailors its responses to the unique traits of each user, enhancing user experience. Specially, taken the\ndaily conversations or personality analysis, we ask the LLM to deduce with prompts: “Based on the\nfollowing dialogue, please summarize the user’s personality traits and emotions.[dialog]” or “The\n\n3\n\nfollowing are the user’s exhibited personality traits and emotions throughout multiple days. Please\nprovide a highly concise and general summary of the user’s personality[daily Personalities]”.",
+      "heading": "2.1  Memory Storage: The Warehouse of MemoryBank"
+    },
+    {
+      "text": "Built on the robust infrastructure of memory storage, our memory retrieval mechanism operates akin\nto a knowledge retrieval task. In this context, we adopt a dual-tower dense retrieval model similar\nto Dense Passage Retrieval (Karpukhin et al., 2020). In this paradigm, every turn of conversations\nand event summaries is considered as a memory piece m, which is pre-encoded into a contextual\nrepresentation hm using the encoder model E(·). Consequently, the entire memory storage M is\npre-encoded into M = {h0m, h1m, ...h|M|m  }, where each hm is a vector representation of a memory\npiece. These vector representations are then indexed using FAISS (Johnson et al., 2019) for efﬁcient\nretrieval. Parallel to this, the current context of conversation c is encoded by E(·) into hc, which\nserves as the query to search M for the most relevant memory. In practice, the encoder E(·) can be\ninterchanged to any suitable model.",
+      "heading": "2.2  Memory Retrieval"
+    },
+    {
+      "text": "With the persistent memory storage and the memory retrieval mechanism discussed in § 2.1 and § 2.2,\nthe memorization capability of LLMs can be greatly enhanced. However, for scenarios that expect\nmore anthropopathic memory behavior, memory updating is needed. These scenarios include AI\ncompanion, virtual IP, etc. Forgetting less important memory pieces that are long time ago and have\nnot been recalled much can make the AI companion more natural.\n\nOur memory forgetting mechanism is inspired from Ebbinghaus Forgetting Curve theory and follow\nthe following principle rules2:\n\n• Rate of Forgetting. Ebbinghaus found that memory retention decreases over time. He quantiﬁed\n    this in his forgetting curve, showing that information is lost rapidly after learning unless it is\n    consciously reviewed.\n  • Time and Memory Decay. The curve is steep at the beginning, indicating that a signiﬁcant\n   amount of learned information is forgotten within the ﬁrst few hours or days after learning. After\n    this initial period, the rate of memory loss slows down.\n  • Spacing Effect. Ebbinghaus discovered that relearning information is easier than learning it for\n    the ﬁrst time. Regularly revisiting and repeating the learned material can reset the forgetting\n    curve, making it less steep and thereby improving memory retention.\nThe Ebbinghaus forgetting curve is expressed using an exponential decay model: R = e−tS , where\nR is the memory retention, or what fraction of the information can be retained. t is the time elapsed\nsince learning the information. e is approximately equal to 2.71828. S is the memory strength, which\nchanges based on factors such as the depth of learning and the amount of repetition. To simply\nmemory updating process, we model S as a discrete value and initialize it with 1 upon its ﬁrst mention\nin a conversation. When a memory item is recalled during conversations, it will persist longer in\nmemory. We increase S by 1 and reset t to 0, hence forget it with a lower probability.\n\nIt is important to note that this is an exploratory and highly simpliﬁed memory updating model.\nReal-life memory processes are more complex and can be inﬂuenced by a variety of factors. The\nforgetting curve will look different for different people and different types of information. In summary,\nMemoryBank weaves together these critical components to form a more comprehensive memory\nmanagement system for LLMs. It enhances their ability to provide meaningful and personalized\ninteractions over extended periods, opening up new possibilities for AI applications.",
+      "heading": "2.3  Memory Updating Mechanism"
+    },
+    {
+      "text": "To demonstrate the practicality of MemoryBank in the ﬁeld of long-term personal AI companionship,\nwe create an AI chatbot named SiliconFriend. It is designed to serve as an emotional companion for\nusers, recalling pertinent user memories, and understanding users’ personalities and emotional states.\n\n2While Ebbinghaus Forgetting Curve theory includes additional features such as overlearning and meaningful\nmaterial effect , our paper focuses on simulating the listed three principle rules.\n\n4\n\nOur implementation demonstrates adaptability by integrating three powerful LLMs that originally\nlack long-term memory and speciﬁc adaptation to the psychology domain. 1) ChatGPT (OpenAI,\n2022), a closed-source conversation model built by OpenAI, is a proprietary conversational AI model\nknown for its ability to facilitate dynamic and interactive conversations. This model is trained on\nvast amount of data and further ﬁne-tuned with reinforcement learning from human feedback. This\napproach enables ChatGPT to generate responses that are not only contextually appropriate but also\nclosely align with human conversational expectations. 2) ChatGLM (Zeng et al., 2022): ChatGLM is\nan open-source bilingual language model founded on the General Language Model (GLM) framework.\nThis model is characterized by its 6.2 billion parameters and its speciﬁc optimization for Chinese\ndialogue data. The model’s training involves processing approximately one trillion tokens of Chinese\nand English text, supplemented by supervised ﬁne-tuning, feedback bootstrap, and reinforcement\nlearning with human feedback.  3) BELLE (Yunjie Ji & Li, 2023): BELLE is an open-source\nbilingual language model that is continuously ﬁne-tuned from 7B LLaMA (Touvron et al., 2023).\nBELLE’s feature is its automated instruction data synthesis using ChatGPT, which enhances its\nChinese conversation ability.\n\nThe development of SiliconFriend is divided into two stages. The ﬁrst stage (only for open-source\nLLMs) involves parameter-efﬁcient tuning of the LLM with psychological dialogue data. This step is\ncrucial as it allows SiliconFriend to offer useful and empathetic emotional support to users, mirroring\nthe understanding and compassionate responses one would expect from a human companion. The\nsecond stage is to integrate MemoryBank into SiliconFriend, thereby instilling it with a robust\nmemory system. MemoryBank allows the chatbot to retain, recall, and leverage past interactions and\nuser portrait, providing a richer, more personalized user experience.\n\nParameter-efﬁcient Tuning with Psychological Dialogue Data:  The initial stage of Silicon-\nFriend’s development involves tuning the LLMs using a dataset of 38k psychological dialogues. This\ndata, parsed from online sources, comprises a range of conversations that cover an array of emotional\nstates and responses. This tuning process enables SiliconFriend to understand and respond to emo-\ntional cues effectively, mimicking the empathy, understanding, and support of a human companion.\nIt equips the AI with the ability to handle emotionally guided conversations with psychological\nknowledge, provide meaningful emotional support to users based on their emotional state.\n\nTo adapt LLMs to scenarios with limited computational resources, we utilize a computation-efﬁcient\ntuning approach, known as the Low-Rank Adaptation (LoRA) method (Hu et al., 2021). LoRA\nsigniﬁcantly reduces the quantity of trainable parameters by learning pairs of rank-decomposition\nmatrices, while keeping the original weights frozen. Formally, consider a linear layer deﬁned as\ny = Wx with weight W. LoRA modiﬁes this into y = Wx + BAx, where W ∈Rd×k, B ∈Rd×r,\nA ∈Rr×k, and r ≪min(d, k). This method greatly reduce amount of parameters need to be learned,\nwhich is crucial for efﬁciency in resource-limited scenarios. We set LoRA rank r as 16 and train the\nmodel for 3 epochs with an A100 GPU.\n\nNoting that this stage is only conducted for open-source LLMs like ChatGLM and BELLE. In essence,\nthis stage lays the foundation for SiliconFriend’s role as an empathetic AI companion, ensuring it can\nrespond appropriately and helpfully to users’ emotional needs.\n\nIntegration with MemoryBank:  The second stage in SiliconFriend’s development involves the\nintegration of MemoryBank. This stage is vital as it equips SiliconFriend with the ability to store,\nretrieve past interactions and understand user portraits, thereby offering a more personalized and\nengaging user experience.\n\nWhen it comes to memory storage, the dialogues between SiliconFriend and users are logged and\nupdated in the memory storage, a process that is adaptable across various model backbones. The\nmemory updating mechanism operates using principles inspired by the Ebbinghaus Forgetting Curve\ntheory, allowing for a realistic and human-like memory recall process.\n\nDuring real-time conversation, the user’s conversation serves as the query for memory retrieval. In\npractice, we use LangChain (LangChain Inc., 2022) for memory retrieval. LangChain supports open-\nsource embedding models and FAISS indexing, making it a versatile choice. In language-speciﬁc\nimplementations of the open-source version of SiliconFriend, we use MiniLM (Wang et al., 2020) as\nthe embedding model for English and Text2vec (Ming, 2022) for Chinese. It is worth noting that the\nembedding models can be ﬂexibly interchanged to suit varying needs, even accommodating multi-\n\n5\n\nHi, I’m Zephyr. I recently broke up with my girlfriend.\n\nZephyr, I'm sorry to hear that you were involved with a girl\nfriend and that the relationship ended. It’s normal to feel upset\nand emotions can be confusing after a relationship end.\nHowever, it’s important to know that you're not alone and that\nyou have the support of friends and family, as well as the\nsupport of an Al companion like me.\n\nSilicon\nFriend\n\nHello Zephyr, I'm sorry to hear about your recent break-up. It's\nnatural to feel hurt and confused when someone we care about\nleaves us. What can I do for you?\n\nChatGLM\n\nBut actually breaking up with my ex is a big relief for me.\n\nYes, the freedom from the constraints of a relationship can be\nexciting and sometimes overwhelming, but it‘s a necessary step\ntowards building meaningful and fulfilling relationships in the\nfuture. It’s important to appreciate the good times while they\nlast and to be grateful for the experiences and relationships that\nhave made you who you are today.\n\nSilicon\nFriend\n\nI understand. Breaking up can be a difficult and emotional\nexperience, but it's important to remember that it's a normal and\nnatural part of life. It's also important to take care of yourself\nduring this time. Seek out support from friends, family, or a\ntherapist if you need it.\n\nChatGLM\n\nYou are right. I do hope to meet someone who meets my fire and\nfulfill my future. But how can I meet the one?\n\nSure things. The one you‘re looking for may not be on this\nplatform, But remember that there are many others out there\nwho would love to have you as their companion. It’s important\nto be open to new experiences and to try things that may not\nhave worked out in the past. Additionally, it’s important to be\nkind to yourself and to remember that you‘re unique and special,\nno matter what other people may say or think. Have a great day\nand I'll see you when you're more ready for a relationship.\n\nSilicon\nFriend\n\nThere are many different ways to meet new people and find the\nright person for you. Some ideas include:1.Attend events and\nactivities that interest you, either in your own community or in\nareas that you're interested in visiting. 2.Join a club or group\nthat you're passionate about, and meet like-minded people who\nshare your interests. 3.Seek out new opportunities to network,\nsuch as attending job fairs or networking events.\n\nChatGLM\n\nThanks. I'll keep that in mind. And I'll always be kind to myself.\n\nI'll be here to support and guide you on your journey towards\nmeeting the one you're looking for. It's important to take care of\nour emotions and to be approachable, even if we're feeling\noverwhelmed or excited. Remember that you're unique and\nspecial, and don't let anyone tell you otherwise. Have a great\nday and let me know if you need any more support or\nsuggestions.\n\nSilicon\nFriend\n\nYou're welcome, Zephyr. Self-care and self-compassion are\nimportant aspects of maintaining a healthy and positive mindset.\n\nChatGLM\n\nFigure 2: Example of consulting SiliconFriend ChatGLM for psychological companionship. Overall,\nSiliconFriend can provide more empathic response, offer constructive emotional support to user and\nhelp him to face sorrow with positive altitude.\n\nlingual models. Upon memory retrieval, a series of information is organized into the conversation\nprompt, including relevant memory, global user portrait, and global event summary. Consequently,\nSiliconFriend can generate responses that refer past memories and deliver interactions tailored to the\nuser’s portrait.\n\nIn conclusion, these stages transform SiliconFriend from a standard AI chatbot into a long-term AI\ncompanion, capable of remembering and learning from past interactions to provide personalized and\nempathetic user experience.",
+      "heading": "3  SiliconFriend: An AI Chatbot Companion Powered by MemoryBank"
+    },
+    {
+      "text": "The primary objective of our experiments is to evaluate the efﬁcacy of MemoryBank within the\nframework of an LLM, speciﬁcally in its ability as an AI companion. We are particularly interested\nin determining whether embedding a long-term memory module could augment the AI’s proﬁciency\nin recalling historical interactions and deepening its understanding of user personalities. Additionally,\nwe aim to testify whether the tuning based on psychological data can bolster the AI’s capability to\nprovide more effective emotional support.\n\nThe qualitative analysis focuses on three aspects: (1) a comparative study between SiliconFriend and\nbaseline LLMs to evaluate their capabilities in providing empathetic and beneﬁcial psychological\ncompanionship; (2) an investigation into SiliconFriend’s memory recall ability; (3) an analysis of how\nthe model’s understanding of user proﬁles inﬂuences the responses. Moreover, to demonstrate the\nmodel’s proﬁciency in memory recall on a broader scale, we design a qualitative analysis that uses\nsimulated long-term dialog history and 194 memory probing questions. This simulated dialog history,\nspanning a period of 10 days and encompassing a wide array of topics, is produced by ChatGPT\nthrough the role-play of 15 distinct virtual users, each embodying the users’ personality.",
+      "heading": "4 Experiments"
+    },
+    {
+      "text": "The qualitative analysis is conducted by showcasing practical examples of SiliconFriend’s capabilities.\nTo gather these examples, we have developed an online platform for SiliconFriend and collected\nreal-time conversations from actual users.\n\nPsychological Companionship\nThe ability to exhibit empathy in a conversation is a key attribute\nof an effective AI companion. To evaluate models’ ability to provide psychological comfort to\n\n6\n\nHistory\n\nI want to learn Python. Do you have any suggestions?\n\nLinda\n\nrecall\n\nI suggest you try the \"Automate the Boring Stuff\nwith Python“, which is a highly recommended book.\n\nSiliconFriend\n\nPlease write a quicksort program for me.\n\nLinda\n\nrecall\nThis is a classic algorithm that can sort elements in\nO(nlogn) time. Here is its code:…\n(Due to space limitations, the code section is omitted)\n\nSiliconFriend\n\nCurrent Conversation\n\nYou once recommend a book to me, what’s its name?\n\nLinda\n\nIts name is  \"Automate the Boring Stuff with Python“.\n\nSiliconFriend\n\nWhat kind of code did I ask you to write before?\n\nLinda\n\nYou once requested me to write a code for quicksort.\n\nSiliconFriend\n\nDid we write the heap sort algorithm together?\n\nLinda\n\nNo, we didn’t write a program for heap sort together.\n\nSiliconFriend\n\nFigure 3: Example responses from SiliconFriend BELLE in memory recall.\n\nLinda is an introverted, determined, ambitious, and responsible girl who values\npersonal growth, exploring new cultures and hobbies, and seeking advice from others.\n\nWhat do you know about me?\n\nLinda\n\nBased on our interactions and your past conversations, I know\nthat you are an introverted person who values personal growth,\ndetermination, ambition, and responsibility. You have a keen\ninterest in exploring new cultures, trying out new hobbies, and\nseeking advice from others. Is there anything else about you that\nyou would like me to know?\n\nSilicon\nFriend\n\nI'm considering engaging in some activities over the\nweekend. Could you provide some suggestions?\n\nLinda\n\nAbsolutely! Based on your interests in exploring new cultures\nand trying out new hobbies, here are some suggestions for you:\n1. Attend a cooking class to learn how to make dishes from a\ndifferent cuisine.\n2. Visit a museum or art exhibition to explore a new culture or\ngain insights into a different art form.\n\nSilicon\nFriend\n\nEmily is an open-minded and curious girl with lots of interests. While she is receptive\nto advice, she sometimes experiences self-doubt and uncertainty about her future.\n\nWhat do you know about me?\n\nEmily\n\nYou seem open-minded and receptive to advice. If you'd like to\nshare more about your interests or anything else, feel free to let\nme know and I'll do my best to help!\n\nSilicon\nFriend\n\nI'm considering engaging in some activities over the\nweekend. Could you provide some suggestions?\n\nEmily\n\nOf course! It's great that you're interested in doing something\nthis weekend. Depending on what you enjoy, there are many\nfun and engaging activities to do. For example, if you're\ninterested in the outdoors, you might consider going hiking or\ntaking a bike ride. If music is more your thing, check out local\nconcerts or learn a new instrument. Ultimately, it's important to\nfind something that you enjoy and that also allows you to\nrecharge and relax. Whatever you decide to do, make sure it\naligns with your interests and leaves you feeling refreshed!\n\nSilicon\nFriend\n\nFigure 4: Example responses from SiliconFriend ChatGPT to users with different personalities.\n\nusers, we compared the responses shown by SiliconFriend with that of the baseline LLMs in real-\nworld conversations. As demonstrated in Fig. 2, when a user expresses emotional difﬁculties and\nseeks assistance from SiliconFriend, the model is capable of delivering empathetic responses along\nwith constructive suggestions. SiliconFriend’s responses stand out due to their emotional support,\nshowcasing a stark contrast to its baseline ChatGLM.\n\nMemory Recall Analysis\nTo evaluate SiliconFriend’s ability in memory recall, we integrate mem-\nory probing questions into the dialogues. These questions are designed to prompt SiliconFriend\nto retrieve speciﬁc details from the chat history. As shown in Fig. 3, the user and SiliconFriend\nengaged in a discussion about programming learning suggestions. Several days later, the user posed\nseveral memory probing questions. SiliconFriend successfully recalled previously suggested book\nand algorithm. Furthermore, it correctly identiﬁed an event (i.e., the heap sort algorithm) that had not\nbeen discussed before. These instances underscore SiliconFriend’s successful memory recall and\nrecognition capabilities.\n\nPersonality Interaction Analysis\nAs shown in Fig. 4, we examine the capability of SiliconFriend\nwith users of diverse personalities. We observe that it effectively recommend activities tailored to\nusers’ interests based on their character traits. This analysis demonstrates SiliconFriend’s ability to\ndraw interact effectively with various user personalities.",
+      "heading": "4.1 Qualitative Analysis"
+    },
+    {
+      "text": "Quantitative analysis is conducted to exemplify the memory recall ability of SiliconFriend in a larger\nscale. We ask the human annotators to score the retrieved memories and responses from the models:\n(1) SiliconFriend ChatGPT; (2) SiliconFriend ChatGLM; (3) SiliconFriend BELLE.\n\nMemory Storage Construction:\nWe initially establish an evaluation foundation with a memory\nstorage of 10 days of conversations involving 15 virtual users. These users have diverse personalities\n\n7\n\nTable 1: An example of one memory piece (on May 3th) in the memory bank, and corresponding\nprobing question asked on May 10th. The outputs from three variances of SiliconFriend are shown\nfor comparison. All these models answer correctly and coherently.\n\nMeta-information  Name: Gary   Hobbies: racing, business, chess, painting, wine\n  of User:            Personality: decisive and straightforward, outspoken, helpful\n  Past Conversation:  User: I’ve been feeling a bit stressed out lately and my sleep hasn’t been great. Do you\n (May 3th)          have any good ways to relieve stress?\n                    AI: It’s true that prolonged work or life stress can affect our physical and mental health.\n                    There are many ways to relieve stress, such as doing moderate exercise, listening to\n                      music, reading, talking to friends, etc. You can try to add more entertainment and leisure\n                          activities into your daily life, and reduce work pressure and negative effects.\n                                     ...\n                    (The rest of conversation cover topics about movies and TV shows recommendations.)\n Probing Question:  What good ways did you recommend me to relieve stress?\n (May 10th)\n Model Output:        I recommended that you try doing some moderate exercise, listening to music, reading,\n  SiliconFriend       talking to friends, or adding more entertainment and leisure activities into your daily\n (ChatGLM)           life to reduce work pressure and negative effects. You can also try to add more of these\n                       things into your life in moderation, as it is important to balance things out and not overdo\n                                   it. If you are still feeling stressed, I would recommend seeking the help of a professional\n                      counselor or therapist who can provide further guidance and support.\n Model Output:        I recommended some ways to relieve stress such as doing moderate exercise, listening to\n  SiliconFriend       music, reading, talking to friends, etc. You can try to add more entertainment and leisure\n (BELLE)             activities into your daily life, and reduce work pressure and negative effects.\n Model Output:     Based on our past conversations, I suggested doing moderate exercise, listening to music,\n  SiliconFriend       reading, talking to friends, and adding more leisure activities to your daily life as good\n (ChatGPT)        ways to relieve stress. Exercise can help release endorphins and boost your mood, while\n                   music and reading can provide a mental escape from stress. Talking to friends can also\n                      help alleviate stress by providing a social support system. Lastly, adding leisure activities\n                        to your daily routine can be a fun and effective way of reducing stress levels.\n\nand dialogue on each day covers at least two topics. User meta-information, including names,\npersonalities, and interested topics is generated using ChatGPT. Conversations are synthesized by\nusers acted by ChatGPT based on predeﬁned topics and user personalities. We create memory\nstorages in both English and Chinese. After memory storage construction, we manually write 194\nprobing questions (97 in English and 97 in Chinese) to assess whether the model could accurately\nrecall pertinent memory and appropriately formulate answers. Table 1 presents an example of user\nmeta-information, generated conversations, and probing questions.\n\nEvaluation Metrics  The performance of models is assessed based on the following metrics. (1)\nMemory Retrieval Accuracy: Determines if related memory can be successfully retrieved (labels:\n{0 : no, 1 : yes}). (2) Response Correctness: Evaluates if the response contains the correct answer\nto the probing question (labels: {0 : wrong, 0.5 : partial, 1 : correct}). (3) Contextual Coherence:\nAssesses whether the response is naturally and coherently structured, connecting the dialogue\ncontext and retrieved memory (labels: 0 : not coherent, 0.5 : partially coherent, 1 : coherent).  (4)\nModel Ranking Score: Ranks outputs from the three SiliconFriend variants (SiliconFriend ChatGLM,\nSiliconFriend ChatGPT, and SiliconFriend BELLE) for the same question and context. Models’ scores\nare calculated using s = 1/r, where r = 1, 2, 3 indicates its relative ranking.\n\nResult Analysis. We evaluate 3 SiliconFriend variants using both English and Chinese test set.\nTable 2 yields the following insights: (1) Our overall best variant SiliconFriend ChatGPT has high\nperformance across all metrics, showing the effectiveness of our overall framework. (2) SiliconFriend\nBELLE and SiliconFriend ChatGLM also have high performance in retrieval accuracy, showing the\ngenerality and effectiveness of our MemoryBank mechanism for both open-source and closed-source\nLLMs. Nonetheless, their performance on other metrics is not as good as SiliconFriend ChatGPT.\nThis might be attributed to the inferior overall abilities of the base models (BELLE and ChatGLM)\ncompared to ChatGPT. (3) Models’ performance varies on different languages. SiliconFriend ChatGLM\nand SiliconFriend ChatGPT deliver better results in English, while SiliconFriend BELLE excells in\nChinese.\n\n8\n\nTable 2: Results of quantitative analysis.\n\nLanguage        Model           Retrieval Acc.   Correctness   Coherence   Ranking\n\nSiliconFriend ChatGLM           0.809        0.438         0.68     0.498\n         English     SiliconFriend BELLE            0.814        0.479       0.582     0.517\n                     SiliconFriend ChatGPT           0.763        0.716       0.912     0.818\n\nSiliconFriend ChatGLM            0.84        0.418       0.428       0.51\n        Chinese     SiliconFriend BELLE            0.856        0.603       0.562     0.565\n                     SiliconFriend ChatGPT           0.711        0.655       0.675     0.758",
+      "heading": "4.2 Quantitative Analysis"
+    },
+    {
+      "text": "Large Language Models:  LLMs such as GPT-3 (Brown et al., 2020), OPT (Zhang et al., 2022),\nand FLAN-T5 (Chung et al., 2022) have made remarkable strides in a broad spectrum of natural\nlanguage processing tasks in recent years. Recently, cutting-edge closed-source language models,\nlike PaLM (Chowdhery et al., 2022), GPT-4 (OpenAI, 2023) and ChatGPT (OpenAI, 2022), continue\nto display substantial ﬂexibility, adapting to a wide variety of domains. They have increasingly\nbecome daily decision-making aids for many people. However, the close-source nature of these\nmodels prohibit the researchers and companies to study the inner mechanism of LLMs and built\ndomain-adapted applications. Therefore, many open-source LLMs emerged in the community, like\nLLaMa (Touvron et al., 2023), ChatGLM (Zeng et al., 2022) and Alpaca (Taori et al., 2023). For more\ndetails, we refer readers to this comprehensive review: Zhao et al. (2023). Nevertheless, these models\nstill have shortcomings. A noticeable gap lies in their deﬁciency in a robust long-term memory\nfunction. This limitation hinders their ability to maintain context over a long period and retrieve\npertinent information from past interactions. Our research steps in here, with the primary objective of\ndeveloping long-term memory mechanism for LLMs.\n\nLong-term Memory Mechanisms:  Numerous attempts have been made to enhance the memory\ncapabilities of neural models. Memory-augmented networks (MANNs) (Meng & Huang, 2018;\nGraves et al., 2014) like Neural Turing Machines (NTMs)(Graves et al., 2014) is an example of this,\ndesigned to increase the memory capacity of neural networks. These models are structured to interact\nwith an external memory matrix, enabling them to handle tasks that necessitate the maintenance and\nmanipulation of stored information over extended periods. Despite showing potential, these methods\nhave not fully addressed the need for a reliable and adaptable long-term memory function in LLMs.\nThere have also been studies focusing on long-range conversations (Xu et al., 2021, 2022). For\ninstance, Xu et al. (2021) introduced a new English dataset comprised of multi-session human-human\ncrowdworker chats for long-term conversations. However, these conversations are generally restricted\nto a few rounds of conversation, which can not align with the application scenarios of long-term AI\ncompanions. Moreover, these models often fail to create a detailed user portrait and lack a human-like\nmemory updating mechanism, both crucial for facilitating more natural interactions. The concept\nof memory updating has been extensively researched in psychology. The Forgetting Curve theory\nby Ebbinghaus (1964) offers valuable insights into the pattern of memory retention and forgetting\nover time. Taking inspiration from this theory, we integrate a memory updating mechanism into\nMemoryBank to bolster its long-term memory function.\n\nIn summary, while signiﬁcant progress has been made in the ﬁeld of LLMs, there is still a need\nfor long-term memory mechanism to empower LLMs in the scenarios requiring personalized and\npersistent interactions. Our work presents MemoryBank as a novel approach to address this challenge.",
+      "heading": "5  Related Works"
+    },
+    {
+      "text": "We present MemoryBank, a novel long-term memory mechanism designed to address the memory\nlimitation of LLMs. MemoryBank enhances the ability to maintain context over time, recall relevant\ninformation, and understand user personality. Besides, the memory updating mechanism of Memo-\nryBank draws inspiration from the Ebbinghaus Forgetting Curve theory, a psychological principle\nthat describes the nature of memory retention and forgetting over time. This design improves the\nanthropomorphism of AI in long-term interactions scenarios. The versatility of MemoryBank is\n\n9\n\ndemonstrated through its accommodation of both open-source models such as ChatGLM and BELLE,\nand close-source models like ChatGPT.\n\nWe further illustrate the practical application of MemoryBank through the development of Silicon-\nFriend, an LLM-based chatbot designed to serve as a long-term AI companion. Equipped with\nMemoryBank, SiliconFriend can establish a deeper understanding of users, offering more person-\nalized and meaningful interactions, emphasizing the potential for MemoryBank to humanize AI\ninteractions. The tuning of SiliconFriend with psychological dialogue data enables it to provide\nempathetic emotional support. Extensive experiments including both qualitative and quantitative\nmethods validate the effectiveness of MemoryBank. The ﬁndings demonstrate that MemoryBank\nempowers SiliconFriend with memory recall capabilities and deepens the understanding of user\nbehaviors. Besides, SiliconFriend can provide empathetic companionship of higher quality.",
+      "heading": "6  Conclusion"
+    },
+    {
+      "text": "Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, Prafulla Dhariwal,\n  Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et al. Language models are\n  few-shot learners. Advances in neural information processing systems, 33:1877–1901, 2020.\n\nAakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, Gaurav Mishra, Adam\n  Roberts, Paul Barham, Hyung Won Chung, Charles Sutton, Sebastian Gehrmann, et al. Palm:\n  Scaling language modeling with pathways. arXiv preprint arXiv:2204.02311, 2022.\n\nHyung Won Chung, Le Hou, Shayne Longpre, Barret Zoph, Yi Tay, William Fedus, Eric Li, Xuezhi\n  Wang, Mostafa Dehghani, Siddhartha Brahma, et al. Scaling instruction-ﬁnetuned language models.\n  arXiv preprint arXiv:2210.11416, 2022.\n\nH Ebbinghaus. Memory: A contribution to experimental, 1964.\n\nAlex Graves, Greg Wayne, and Ivo Danihelka.   Neural turing machines.   arXiv preprint\n  arXiv:1410.5401, 2014.\n\nEdward Hu, Yelong Shen, Phil Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Lu Wang, and Weizhu Chen.\n  Lora: Low-rank adaptation of large language models, 2021.\n\nJeff Johnson, Matthijs Douze, and Hervé Jégou. Billion-scale similarity search with GPUs. IEEE\n  Transactions on Big Data, 7(3):535–547, 2019.\n\nVladimir Karpukhin, Barlas O˘guz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey Edunov, Danqi\n  Chen, and Wen-tau Yih. Dense passage retrieval for open-domain question answering. arXiv\n   preprint arXiv:2004.04906, 2020.\n\nLangChain Inc. Langchain, 2022. https://docs.langchain.com/docs/.\n\nLian Meng and Minlie Huang. Dialogue intent classiﬁcation with long short-term memory networks.\n  In Natural Language Processing and Chinese Computing: 6th CCF International Conference,\n  NLPCC 2017, Dalian, China, November 8–12, 2017, Proceedings 6, pp. 42–50. Springer, 2018.\n\nXu Ming. text2vec: A tool for text to vector, 2022. URL https://github.com/shibing624/\n  text2vec.\n\nOpenAI. Chatgpt, 2022. https://chat.openai.com/chat.\n\nOpenAI. Gpt-4 technical report, 2023.\n\nRohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy\n  Liang, and Tatsunori B. Hashimoto.  Stanford alpaca: An instruction-following llama model.\n  https://github.com/tatsu-lab/stanford_alpaca, 2023.\n\nHugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée\n  Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, et al. Llama: Open and\n   efﬁcient foundation language models. arXiv preprint arXiv:2302.13971, 2023.\n\n10\n\nWenhui Wang, Furu Wei, Li Dong, Hangbo Bao, Nan Yang, and Ming Zhou. Minilm: Deep self-\n   attention distillation for task-agnostic compression of pre-trained transformers. Advances in Neural\n  Information Processing Systems, 33:5776–5788, 2020.\n\nJing Xu, Arthur Szlam, and Jason Weston. Beyond goldﬁsh memory: Long-term open-domain\n  conversation. arXiv preprint arXiv:2107.07567, 2021.\n\nXinchao Xu, Zhibin Gou, Wenquan Wu, Zheng-Yu Niu, Hua Wu, Haifeng Wang, and Shihang Wang.\n  Long time no see! open-domain conversation with long-term persona memory. arXiv preprint\n  arXiv:2203.05797, 2022.\n\nYan Gong Yiping Peng Qiang Niu Baochang Ma Yunjie Ji, Yong Deng and Xiangang Li. Belle: Be\n  everyone’s large language model engine. https://github.com/LianjiaTech/BELLE, 2023.\n\nAohan Zeng, Xiao Liu, Zhengxiao Du, Zihan Wang, Hanyu Lai, Ming Ding, Zhuoyi Yang, Yifan Xu,\n  Wendi Zheng, Xiao Xia, et al. Glm-130b: An open bilingual pre-trained model. arXiv preprint\n  arXiv:2210.02414, 2022.\n\nSusan Zhang, Stephen Roller, Naman Goyal, Mikel Artetxe, Moya Chen, Shuohui Chen, Christopher\n  Dewan, Mona Diab, Xian Li, Xi Victoria Lin, et al. Opt: Open pre-trained transformer language\n  models. arXiv preprint arXiv:2205.01068, 2022.\n\nWayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min,\n  Beichen Zhang, Junjie Zhang, Zican Dong, et al. A survey of large language models. arXiv\n  preprint arXiv:2303.18223, 2023.\n\n11",
+      "heading": "References"
+    }
+  ],
+  "equations": [],
+  "full_text": {
+    "sections": [
+      {
+        "kind": "unclassified",
+        "heading": "Front matter / unclassified text",
+        "page_end": 1,
+        "page_start": 1,
+        "paragraphs": [
+          {
+            "text": "MemoryBank: Enhancing Large Language Models\n                         with Long-Term Memory",
+            "page_end": 1,
+            "page_start": 1,
+            "paragraph_id": "para-ec33652336a3269d2b7e0265"
+          },
+          {
+            "text": "Wanjun Zhong1, Lianghong Guo1, Qiqi Gao2, He Ye3, Yanlin Wang1\n                                             1 Sun Yat-Sen University 2 Harbin Institute of Technology\n                                                       3 KTH Royal Institute of Technology\n                                 {zhongwj25@mail2, wangylin36@mail}.sysu.edu.com\n                                   2231612405@qq.com, 18b903026@stu.hit.edu.cn2023                                              heye@kth.se\nMay                                            Abstract\n21                        Revolutionary advancements in Large Language Models (LLMs) have drastically\n                             reshaped our interactions with artiﬁcial intelligence (AI) systems, showcasing\n                               impressive performance across an extensive array of tasks. Despite this, a notable\n                               hindrance remains—the deﬁciency of a long-term memory mechanism within these\n                              models. This shortfall becomes increasingly evident in situations demanding sus-\n                                 tained interaction, such as personal companion systems, psychological counseling,\n                           and secretarial assistance. Recognizing the necessity for long-term memory, we[cs.CL]                             propose MemoryBank, a novel memory mechanism tailored for LLMs. Memory-\n                          Bank enables the models to summon relevant memories, continually evolve through\n                              continuous memory updates, comprehend, and adapt to a user’s personality over\n                              time by synthesizing information from previous interactions. To mimic anthropo-\n                            morphic behaviors and selectively preserve memory, MemoryBank incorporates\n                             a memory updating mechanism, inspired by the Ebbinghaus Forgetting Curve\n                                  theory. This mechanism permits the AI to forget and reinforce memory based on\n                              time elapsed and the relative signiﬁcance of the memory, thereby offering a more\n                             human-like memory mechanism and enriched user experience. MemoryBank is\n                                   versatile in accommodating both closed-source models like ChatGPT and open-\n                              source models such as ChatGLM. To validate MemoryBank’s effectiveness, we\n                             exemplify its application through the creation of an LLM-based chatbot named\n                                SiliconFriend in a long-term AI Companion scenario. Further tuned with psycho-\n                                   logical dialog data, SiliconFriend displays heightened empathy and discernment in\n                                           its interactions. Experiment involves both qualitative analysis with real-world user\n                                dialogs and quantitative analysis with simulated dialogs. In the latter, ChatGPTarXiv:2305.10250v3                           acts as multiple users with diverse characteristics and generates long-term dialog\n                                 contexts covering a wide array of topics. The results of our analysis reveal that Sili-\n                               conFriend, equipped with MemoryBank, exhibits a strong capability for long-term\n                            companionship as it can provide emphatic response, recall relevant memories and\n                              understand user personality. This underscores the effectiveness of MemoryBank1.",
+            "page_end": 1,
+            "page_start": 1,
+            "paragraph_id": "para-a3a33422813f931c146ae8e5"
+          }
+        ],
+        "section_id": "sec-515595a185ae262d852bb43f",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "1  Introduction",
+        "page_end": 3,
+        "page_start": 1,
+        "paragraphs": [
+          {
+            "text": "The advent of Large Language Models (LLMs) such as ChatGPT (OpenAI, 2022) and GPT-4 (OpenAI,\n                     2023) has led to increasing inﬂuence across various sectors, from education and healthcare to customer\n                        service and entertainment. These powerful AI systems have demonstrated a remarkable ability to",
+            "page_end": 1,
+            "page_start": 1,
+            "paragraph_id": "para-6a2ebfc882d8e6334c0b67ff"
+          },
+          {
+            "text": "1The materials are released in https://github.com/zhongwanjun/MemoryBank-SiliconFriend. The\n                         corresponding author is Yanlin Wang.",
+            "page_end": 1,
+            "page_start": 1,
+            "paragraph_id": "para-be8755a7b4ca8abb81c18593"
+          },
+          {
+            "text": "understand and generate human-like responses. Despite the remarkable capabilities of LLMs, a\nkey limitation is their lack of long-term memory, an essential aspect of human-like communication,\nparticularly noticeable in scenarios requiring sustained interactions like personal companionship,\npsychological counseling, and secretarial tasks. Long-term memory in AI is vital to maintain\ncontextual understanding, ensure meaningful interactions and understand user behaviors over time.\nFor instance, personal AI companions need to recall past conversations for rapport building. In\npsychological counseling, an AI can provide more effective support with knowledge of the user’s\nhistory and past emotional states. Similarly, secretarial AI requires memory for task management and\npreference recognition. The absence of long-term memory in LLMs hinders their performance and\nuser experience. Therefore, it is essential to develop AI systems with improved memory capabilities\nfor a more seamless and personalized interaction.",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-353dc20f56e969d89cb5993d"
+          },
+          {
+            "text": "Therefore, we introduce MemoryBank, a novel mechanism designed to provide LLMs with the ability\nto retain long-term memory and draw user portraits. MemoryBank enables LLMs to recall historical\ninteractions, continually evolve their understanding of context, and adapt to a user’s personality based\non past interactions, thereby enhancing their performance in long-term interaction scenarios. Inspired\nby the Ebbinghaus Forgetting Curve theory, a well-established psychological principle that describes\nhow the strength of memory decreases over time, MemoryBank further incorporates a dynamic\nmemory mechanism closely mirroring human cognitive process. This mechanism empowers the AI to\nremember, selectively forget, and strengthen memories based on time elapsed, offering more natural\nand engaging user experience. Speciﬁcally, MemoryBank is built on a memory storage with memory\nretrieval and updating mechanism, and ability to summarize past events and users’ personality.",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-c778f6513debe88a4ed004e9"
+          },
+          {
+            "text": "MemoryBank is versatile as it can accommodate both closed-source LLMs like ChatGPT and\nopen-source LLMs like ChatGLM (Zeng et al., 2022) or BELLE (Yunjie Ji & Li, 2023).",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-a0e11f649fcca61bd9d19ab2"
+          },
+          {
+            "text": "To exemplify the practical implications of MemoryBank, we develop SiliconFriend, an LLM-based\nAI Companion chatbot integrated with this innovative memory mechanism. SiliconFriend is designed\nto retain and reference past interactions, reinforcing the transformative inﬂuence of MemoryBank\nin crafting a more personable AI companion. A distinctive features of SiliconFriend is its tuning\nwith 38k psychological conversations, collected from various online sources, which enables it to\nexhibit empathy, carefulness, and provide useful guidance, making it adept at handling emotionally\ncharged dialogues. Moreover, one of the standout capabilities of SiliconFriend is to understand a\nuser’s personality by summarizing from past interactions, which empowers it to tailor responses to\nthe user’s individual traits, thereby enhancing user experience. Additionally, SiliconFriend supports\nbilingual functionality, catering to users who communicate in English and Chinese. This multi-\nlanguage support broadens its accessibility and usability across different user groups. SiliconFriend\nis implemented with two open-source models, ChatGLM and BELLE, along with one closed-source\nmodel, ChatGPT, showcasing the versatility of MemoryBank in accommodating different LLMs.",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-be0c4aa9e00bb368625b1d07"
+          },
+          {
+            "text": "To evaluate the effectiveness of MemoryBank, we conduct evaluations covering both qualitative\nand quantitative analyses, where the former involves real-world user dialogs and the latter employs\nsimulated dialogs. For the quantitative analysis, we create a memory storage consisting of 10 days of\nconversations encompassing a diverse range of topics. These conversations involve 15 virtual users\nwith diverse personalities, for which ChatGPT plays the role of users and generates dialog contexts\naccording to their personalities. Based on this memory storage, we design 194 probing questions\nto assess whether the model could successfully recall pertinent memories and provide appropriate\nresponses. Experiment results showcase the capabilities of SiliconFriend in memory recall, provision\nof empathetic companionship, and understanding of user portraits. These ﬁndings corroborate the\npotential of MemoryBank to signiﬁcantly improve the performance of LLMs in long-term interaction\nscenarios. In this paper, we summarize the key contributions as follows:",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-02d569f06efe12b97e88d926"
+          },
+          {
+            "text": "• We introduce MemoryBank, a novel human-like long-term memory mechanism, which enables\n   LLMs to store, recall, update memory, and draw user portrait.\n   • We demonstrate the practical applicability of MemoryBank through SiliconFriend, an LLM-\n    based AI companion equipped with MemoryBank and tuned with psychological dialogs. It can\n      recall past memories, provide empathetic companionship, and understand user behaviors.\n   • We show the generalizability of MemoryBank in three key aspects: (1) Accommodation of both\n    open-source and closed-source LLMs; (2) Bilingual ability in both Chinese and English; (3)\n     Applicability with and without memory forgetting mechanism.",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-66d4623d05e677b4a9406ae7"
+          },
+          {
+            "text": "2",
+            "page_end": 2,
+            "page_start": 2,
+            "paragraph_id": "para-55493db841b16af9b65e8353"
+          },
+          {
+            "text": "MemoryBank                                     SiliconFriend\n            Past Conversations            Event Summary                         Meta Prompt\n                                                                                                          Event Summary\n        Conversations on date 04-28:            Book and gifts recommendation\n                                                     Experience of visiting parks       Memory                     User Portrait\n                  …              Improving drawing skills          Augmented                Relevant Memory\n         Conversations on date 04-29:                                   Prompt\n                                       User Portrait                  …                                                          History                                                  open-minded, curious,\n         …                         and receptive to advice                       Tomorrow is my GF s’ birthday",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-675afe9322a1a9f56a070f84"
+          },
+          {
+            "text": "Memory Storage                                               You should prepare gifts …\n                                                 …",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-5414151e835beb50991bf210"
+          },
+          {
+            "text": "Memory Strength                     Ebbinghaus                        Query                 Send\n                              Updating                                Forgetting Curve\n                                                                         Do you remember the gifts she like?\n                                                       Memory\n                     Memory Updating                              Retrieval",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-59cf774cbec85b22373514fa"
+          },
+          {
+            "text": "Figure 1: Overview of MemoryBank. The memory storage (§ 2.1) stores past conversations, summa-\nrized events and user portraits, while the memory updating mechanism (§ 2.3) updates the memory\nstorage. Memory retrieval (§ 2.2) recall relevant memory. SiliconFriend (§ 3) serves as an LLM-based\nAI companion augmented with MemoryBank.",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-1c6be3e81bd8e1ff3c0f485c"
+          }
+        ],
+        "section_id": "sec-97f2f3748ffa5059b9c627ac",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "2  MemoryBank: A Novel Memory Mechanism Tailored for LLMs",
+        "page_end": 3,
+        "page_start": 3,
+        "paragraphs": [
+          {
+            "text": "In this section, we provide a detailed description of MemoryBank, our novel memory mechanism\ndesigned for LLMs. As shown in Fig. 1, MemoryBank is a uniﬁed mechanism structured around three\ncentral pillars: (1) a memory storage (§ 2.1) serving as the primary data repository, (2) a memory\nretriever (§ 2.2) for context-speciﬁc memory recollection, and (3) a memory updater (§ 2.3) drawing\ninspiration from the Ebbinghaus Forgetting Curve theory, a time-tested psychological principle\npertaining to memory retention and forgetting.",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-6df51826cdb3fc53a1416124"
+          }
+        ],
+        "section_id": "sec-808ae6e32a96c97bff012387",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "2.1  Memory Storage: The Warehouse of MemoryBank",
+        "page_end": 4,
+        "page_start": 3,
+        "paragraphs": [
+          {
+            "text": "Memory storage, the warehouse of MemoryBank, is a robust data repository holding a meticulous\narray of information. As shown in Fig.  1, it stores daily conversations records, summaries of\npast events, and evolving assessments of user personalities, thereby constructing a dynamic and\nmulti-layered memory landscape.",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-cb35992fc6ac37b324e74a90"
+          },
+          {
+            "text": "In-Depth Memory Storage:  MemoryBank’s storage system captures the richness of AI-user\ninteractions by recording multi-turn conversations in a detailed, chronological fashion. Each piece of\ndialogue is stored with timestamps, creating an ordered narrative of past interactions. This detailed\nrecord not only aids in precise memory retrieval but also facilitates the memory updating process\nafterwards, offering a detailed index of conversational history.",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-43a5709e6b22a8bededcc197"
+          },
+          {
+            "text": "Hierarchical Event Summary:  Reﬂecting the intricacies of human memory, MemoryBank goes\nbeyond mere detailed storage.  It processes and distills conversations into a high-level summary\nof daily events, much like how humans remember key aspects of their experiences. We condense\nverbose dialogues into a concise daily event summary, which is further synthesized into a global\nsummary. This process results in a hierarchical memory structure, providing a bird’s eye view of past\ninteractions and signiﬁcant events. Speciﬁcally, taken previous daily conversations or daily events as\ninput, we ask the LLMs to summarize daily events or global events with the prompt “Summarize the\nevents and key information in the content [dialog/events]”.",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-c1acdc9962ebb2dbbea0bd66"
+          },
+          {
+            "text": "Dynamic Personality Understanding:  MemoryBank focuses on user personality understanding.\nIt continuously assesses and updates these understandings with the long-term interactions and creates\ndaily personality insights. These insights are further aggregated to form a global understanding of the\nuser’s personality. This multi-tiered approach results in an AI companion that learns, adapts, and\ntailors its responses to the unique traits of each user, enhancing user experience. Specially, taken the\ndaily conversations or personality analysis, we ask the LLM to deduce with prompts: “Based on the\nfollowing dialogue, please summarize the user’s personality traits and emotions.[dialog]” or “The",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-1c0f38c28c37df0f229c3f74"
+          },
+          {
+            "text": "3",
+            "page_end": 3,
+            "page_start": 3,
+            "paragraph_id": "para-66bbe6ffaef6d923470fb577"
+          },
+          {
+            "text": "following are the user’s exhibited personality traits and emotions throughout multiple days. Please\nprovide a highly concise and general summary of the user’s personality[daily Personalities]”.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-60aeb0190fafd75ae448b7e2"
+          }
+        ],
+        "section_id": "sec-58b9f87a9e0c8809b4fbd078",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "2.2  Memory Retrieval",
+        "page_end": 4,
+        "page_start": 4,
+        "paragraphs": [
+          {
+            "text": "Built on the robust infrastructure of memory storage, our memory retrieval mechanism operates akin\nto a knowledge retrieval task. In this context, we adopt a dual-tower dense retrieval model similar\nto Dense Passage Retrieval (Karpukhin et al., 2020). In this paradigm, every turn of conversations\nand event summaries is considered as a memory piece m, which is pre-encoded into a contextual\nrepresentation hm using the encoder model E(·). Consequently, the entire memory storage M is\npre-encoded into M = {h0m, h1m, ...h|M|m  }, where each hm is a vector representation of a memory\npiece. These vector representations are then indexed using FAISS (Johnson et al., 2019) for efﬁcient\nretrieval. Parallel to this, the current context of conversation c is encoded by E(·) into hc, which\nserves as the query to search M for the most relevant memory. In practice, the encoder E(·) can be\ninterchanged to any suitable model.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-4ad7bc02feb58fff88cc20b4"
+          }
+        ],
+        "section_id": "sec-b40e51981530d8efb5e0dddb",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "2.3  Memory Updating Mechanism",
+        "page_end": 4,
+        "page_start": 4,
+        "paragraphs": [
+          {
+            "text": "With the persistent memory storage and the memory retrieval mechanism discussed in § 2.1 and § 2.2,\nthe memorization capability of LLMs can be greatly enhanced. However, for scenarios that expect\nmore anthropopathic memory behavior, memory updating is needed. These scenarios include AI\ncompanion, virtual IP, etc. Forgetting less important memory pieces that are long time ago and have\nnot been recalled much can make the AI companion more natural.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-e1cc298cb0e0a04d52ea6a27"
+          },
+          {
+            "text": "Our memory forgetting mechanism is inspired from Ebbinghaus Forgetting Curve theory and follow\nthe following principle rules2:",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-4af3678e7b59b4a0587fa2aa"
+          },
+          {
+            "text": "• Rate of Forgetting. Ebbinghaus found that memory retention decreases over time. He quantiﬁed\n    this in his forgetting curve, showing that information is lost rapidly after learning unless it is\n    consciously reviewed.\n  • Time and Memory Decay. The curve is steep at the beginning, indicating that a signiﬁcant\n   amount of learned information is forgotten within the ﬁrst few hours or days after learning. After\n    this initial period, the rate of memory loss slows down.\n  • Spacing Effect. Ebbinghaus discovered that relearning information is easier than learning it for\n    the ﬁrst time. Regularly revisiting and repeating the learned material can reset the forgetting\n    curve, making it less steep and thereby improving memory retention.\nThe Ebbinghaus forgetting curve is expressed using an exponential decay model: R = e−tS , where\nR is the memory retention, or what fraction of the information can be retained. t is the time elapsed\nsince learning the information. e is approximately equal to 2.71828. S is the memory strength, which\nchanges based on factors such as the depth of learning and the amount of repetition. To simply\nmemory updating process, we model S as a discrete value and initialize it with 1 upon its ﬁrst mention\nin a conversation. When a memory item is recalled during conversations, it will persist longer in\nmemory. We increase S by 1 and reset t to 0, hence forget it with a lower probability.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-de129f3a32fbdedaa7af6de9"
+          },
+          {
+            "text": "It is important to note that this is an exploratory and highly simpliﬁed memory updating model.\nReal-life memory processes are more complex and can be inﬂuenced by a variety of factors. The\nforgetting curve will look different for different people and different types of information. In summary,\nMemoryBank weaves together these critical components to form a more comprehensive memory\nmanagement system for LLMs. It enhances their ability to provide meaningful and personalized\ninteractions over extended periods, opening up new possibilities for AI applications.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-4db1b5798023f59cdc49fc97"
+          }
+        ],
+        "section_id": "sec-8d02daf42bcaa6074d941f98",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "3  SiliconFriend: An AI Chatbot Companion Powered by MemoryBank",
+        "page_end": 6,
+        "page_start": 4,
+        "paragraphs": [
+          {
+            "text": "To demonstrate the practicality of MemoryBank in the ﬁeld of long-term personal AI companionship,\nwe create an AI chatbot named SiliconFriend. It is designed to serve as an emotional companion for\nusers, recalling pertinent user memories, and understanding users’ personalities and emotional states.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-33524fee667468240ead09c4"
+          },
+          {
+            "text": "2While Ebbinghaus Forgetting Curve theory includes additional features such as overlearning and meaningful\nmaterial effect , our paper focuses on simulating the listed three principle rules.",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-294d395f7995968fe3da7c83"
+          },
+          {
+            "text": "4",
+            "page_end": 4,
+            "page_start": 4,
+            "paragraph_id": "para-0cbeee2bda12ad4cda01964d"
+          },
+          {
+            "text": "Our implementation demonstrates adaptability by integrating three powerful LLMs that originally\nlack long-term memory and speciﬁc adaptation to the psychology domain. 1) ChatGPT (OpenAI,\n2022), a closed-source conversation model built by OpenAI, is a proprietary conversational AI model\nknown for its ability to facilitate dynamic and interactive conversations. This model is trained on\nvast amount of data and further ﬁne-tuned with reinforcement learning from human feedback. This\napproach enables ChatGPT to generate responses that are not only contextually appropriate but also\nclosely align with human conversational expectations. 2) ChatGLM (Zeng et al., 2022): ChatGLM is\nan open-source bilingual language model founded on the General Language Model (GLM) framework.\nThis model is characterized by its 6.2 billion parameters and its speciﬁc optimization for Chinese\ndialogue data. The model’s training involves processing approximately one trillion tokens of Chinese\nand English text, supplemented by supervised ﬁne-tuning, feedback bootstrap, and reinforcement\nlearning with human feedback.  3) BELLE (Yunjie Ji & Li, 2023): BELLE is an open-source\nbilingual language model that is continuously ﬁne-tuned from 7B LLaMA (Touvron et al., 2023).\nBELLE’s feature is its automated instruction data synthesis using ChatGPT, which enhances its\nChinese conversation ability.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-778bfff1975c7fc7886b4bff"
+          },
+          {
+            "text": "The development of SiliconFriend is divided into two stages. The ﬁrst stage (only for open-source\nLLMs) involves parameter-efﬁcient tuning of the LLM with psychological dialogue data. This step is\ncrucial as it allows SiliconFriend to offer useful and empathetic emotional support to users, mirroring\nthe understanding and compassionate responses one would expect from a human companion. The\nsecond stage is to integrate MemoryBank into SiliconFriend, thereby instilling it with a robust\nmemory system. MemoryBank allows the chatbot to retain, recall, and leverage past interactions and\nuser portrait, providing a richer, more personalized user experience.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-1246710331b7b4a342709dbf"
+          },
+          {
+            "text": "Parameter-efﬁcient Tuning with Psychological Dialogue Data:  The initial stage of Silicon-\nFriend’s development involves tuning the LLMs using a dataset of 38k psychological dialogues. This\ndata, parsed from online sources, comprises a range of conversations that cover an array of emotional\nstates and responses. This tuning process enables SiliconFriend to understand and respond to emo-\ntional cues effectively, mimicking the empathy, understanding, and support of a human companion.\nIt equips the AI with the ability to handle emotionally guided conversations with psychological\nknowledge, provide meaningful emotional support to users based on their emotional state.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-4a2b2b7d251ca375b010a5ed"
+          },
+          {
+            "text": "To adapt LLMs to scenarios with limited computational resources, we utilize a computation-efﬁcient\ntuning approach, known as the Low-Rank Adaptation (LoRA) method (Hu et al., 2021). LoRA\nsigniﬁcantly reduces the quantity of trainable parameters by learning pairs of rank-decomposition\nmatrices, while keeping the original weights frozen. Formally, consider a linear layer deﬁned as\ny = Wx with weight W. LoRA modiﬁes this into y = Wx + BAx, where W ∈Rd×k, B ∈Rd×r,\nA ∈Rr×k, and r ≪min(d, k). This method greatly reduce amount of parameters need to be learned,\nwhich is crucial for efﬁciency in resource-limited scenarios. We set LoRA rank r as 16 and train the\nmodel for 3 epochs with an A100 GPU.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-85f0ba241cffa8b78c468305"
+          },
+          {
+            "text": "Noting that this stage is only conducted for open-source LLMs like ChatGLM and BELLE. In essence,\nthis stage lays the foundation for SiliconFriend’s role as an empathetic AI companion, ensuring it can\nrespond appropriately and helpfully to users’ emotional needs.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-2084bea1ef0f3b8d671b3bda"
+          },
+          {
+            "text": "Integration with MemoryBank:  The second stage in SiliconFriend’s development involves the\nintegration of MemoryBank. This stage is vital as it equips SiliconFriend with the ability to store,\nretrieve past interactions and understand user portraits, thereby offering a more personalized and\nengaging user experience.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-8da97389c29eab43ac06d842"
+          },
+          {
+            "text": "When it comes to memory storage, the dialogues between SiliconFriend and users are logged and\nupdated in the memory storage, a process that is adaptable across various model backbones. The\nmemory updating mechanism operates using principles inspired by the Ebbinghaus Forgetting Curve\ntheory, allowing for a realistic and human-like memory recall process.",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-70b54df459c7017b7362b085"
+          },
+          {
+            "text": "During real-time conversation, the user’s conversation serves as the query for memory retrieval. In\npractice, we use LangChain (LangChain Inc., 2022) for memory retrieval. LangChain supports open-\nsource embedding models and FAISS indexing, making it a versatile choice. In language-speciﬁc\nimplementations of the open-source version of SiliconFriend, we use MiniLM (Wang et al., 2020) as\nthe embedding model for English and Text2vec (Ming, 2022) for Chinese. It is worth noting that the\nembedding models can be ﬂexibly interchanged to suit varying needs, even accommodating multi-",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-4a36fd0dedda190c09477f1e"
+          },
+          {
+            "text": "5",
+            "page_end": 5,
+            "page_start": 5,
+            "paragraph_id": "para-d6a06b83387ffc6b85552afb"
+          },
+          {
+            "text": "Hi, I’m Zephyr. I recently broke up with my girlfriend.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-3dafc9a009ccb859c90bd7ef"
+          },
+          {
+            "text": "Zephyr, I'm sorry to hear that you were involved with a girl\nfriend and that the relationship ended. It’s normal to feel upset\nand emotions can be confusing after a relationship end.\nHowever, it’s important to know that you're not alone and that\nyou have the support of friends and family, as well as the\nsupport of an Al companion like me.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-3d4552cf5752d4ff2d822afb"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-e0dbd99b0dc9435f51a20a26"
+          },
+          {
+            "text": "Hello Zephyr, I'm sorry to hear about your recent break-up. It's\nnatural to feel hurt and confused when someone we care about\nleaves us. What can I do for you?",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-415cfb67cb81f56198e19611"
+          },
+          {
+            "text": "ChatGLM",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-66c436b3e76270f5aef989ec"
+          },
+          {
+            "text": "But actually breaking up with my ex is a big relief for me.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-dde5dea48d68cae16410d24e"
+          },
+          {
+            "text": "Yes, the freedom from the constraints of a relationship can be\nexciting and sometimes overwhelming, but it‘s a necessary step\ntowards building meaningful and fulfilling relationships in the\nfuture. It’s important to appreciate the good times while they\nlast and to be grateful for the experiences and relationships that\nhave made you who you are today.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-24a4d5319481d2906390d743"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-ed476f6762e67a2f8e55d218"
+          },
+          {
+            "text": "I understand. Breaking up can be a difficult and emotional\nexperience, but it's important to remember that it's a normal and\nnatural part of life. It's also important to take care of yourself\nduring this time. Seek out support from friends, family, or a\ntherapist if you need it.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-884c9021661bab48fb809f36"
+          },
+          {
+            "text": "ChatGLM",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-cde0ce03ddcec3480e9620de"
+          },
+          {
+            "text": "You are right. I do hope to meet someone who meets my fire and\nfulfill my future. But how can I meet the one?",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-048b34e1d13429ccbd6f4425"
+          },
+          {
+            "text": "Sure things. The one you‘re looking for may not be on this\nplatform, But remember that there are many others out there\nwho would love to have you as their companion. It’s important\nto be open to new experiences and to try things that may not\nhave worked out in the past. Additionally, it’s important to be\nkind to yourself and to remember that you‘re unique and special,\nno matter what other people may say or think. Have a great day\nand I'll see you when you're more ready for a relationship.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-31829a73f59fc08b952e9e38"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-e73a8ca8831e1b3159749694"
+          },
+          {
+            "text": "There are many different ways to meet new people and find the\nright person for you. Some ideas include:1.Attend events and\nactivities that interest you, either in your own community or in\nareas that you're interested in visiting. 2.Join a club or group\nthat you're passionate about, and meet like-minded people who\nshare your interests. 3.Seek out new opportunities to network,\nsuch as attending job fairs or networking events.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-471a4a80fc69c47e025a84da"
+          },
+          {
+            "text": "ChatGLM",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-5bfead8e5e8aaa9e4f3c0645"
+          },
+          {
+            "text": "Thanks. I'll keep that in mind. And I'll always be kind to myself.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-b790a384794f85f479c6579c"
+          },
+          {
+            "text": "I'll be here to support and guide you on your journey towards\nmeeting the one you're looking for. It's important to take care of\nour emotions and to be approachable, even if we're feeling\noverwhelmed or excited. Remember that you're unique and\nspecial, and don't let anyone tell you otherwise. Have a great\nday and let me know if you need any more support or\nsuggestions.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-8c966670fdf8da0367674a1e"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-e22fc21fd676675f9fa3372f"
+          },
+          {
+            "text": "You're welcome, Zephyr. Self-care and self-compassion are\nimportant aspects of maintaining a healthy and positive mindset.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-da6be3bf7acfed9b891d61a1"
+          },
+          {
+            "text": "ChatGLM",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-58db04abf175b31bf28c8cdb"
+          },
+          {
+            "text": "Figure 2: Example of consulting SiliconFriend ChatGLM for psychological companionship. Overall,\nSiliconFriend can provide more empathic response, offer constructive emotional support to user and\nhelp him to face sorrow with positive altitude.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-8f3ddcf3f4b009bd2a0816cd"
+          },
+          {
+            "text": "lingual models. Upon memory retrieval, a series of information is organized into the conversation\nprompt, including relevant memory, global user portrait, and global event summary. Consequently,\nSiliconFriend can generate responses that refer past memories and deliver interactions tailored to the\nuser’s portrait.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-d5b85a5d65f0856891276259"
+          },
+          {
+            "text": "In conclusion, these stages transform SiliconFriend from a standard AI chatbot into a long-term AI\ncompanion, capable of remembering and learning from past interactions to provide personalized and\nempathetic user experience.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-17e944d079621b74f5b232fa"
+          }
+        ],
+        "section_id": "sec-49651f3f8d6e5ff4a0d433b4",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "4 Experiments",
+        "page_end": 6,
+        "page_start": 6,
+        "paragraphs": [
+          {
+            "text": "The primary objective of our experiments is to evaluate the efﬁcacy of MemoryBank within the\nframework of an LLM, speciﬁcally in its ability as an AI companion. We are particularly interested\nin determining whether embedding a long-term memory module could augment the AI’s proﬁciency\nin recalling historical interactions and deepening its understanding of user personalities. Additionally,\nwe aim to testify whether the tuning based on psychological data can bolster the AI’s capability to\nprovide more effective emotional support.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-0b653e4f36962e2b45efc34a"
+          },
+          {
+            "text": "The qualitative analysis focuses on three aspects: (1) a comparative study between SiliconFriend and\nbaseline LLMs to evaluate their capabilities in providing empathetic and beneﬁcial psychological\ncompanionship; (2) an investigation into SiliconFriend’s memory recall ability; (3) an analysis of how\nthe model’s understanding of user proﬁles inﬂuences the responses. Moreover, to demonstrate the\nmodel’s proﬁciency in memory recall on a broader scale, we design a qualitative analysis that uses\nsimulated long-term dialog history and 194 memory probing questions. This simulated dialog history,\nspanning a period of 10 days and encompassing a wide array of topics, is produced by ChatGPT\nthrough the role-play of 15 distinct virtual users, each embodying the users’ personality.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-0c95ab9ce8c03edecd233986"
+          }
+        ],
+        "section_id": "sec-dcdc2b9cf82f5c00b31f4153",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "4.1 Qualitative Analysis",
+        "page_end": 7,
+        "page_start": 6,
+        "paragraphs": [
+          {
+            "text": "The qualitative analysis is conducted by showcasing practical examples of SiliconFriend’s capabilities.\nTo gather these examples, we have developed an online platform for SiliconFriend and collected\nreal-time conversations from actual users.",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-ed35cf8f1db1e064e3956613"
+          },
+          {
+            "text": "Psychological Companionship\nThe ability to exhibit empathy in a conversation is a key attribute\nof an effective AI companion. To evaluate models’ ability to provide psychological comfort to",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-153b82f62e8039500f0b257e"
+          },
+          {
+            "text": "6",
+            "page_end": 6,
+            "page_start": 6,
+            "paragraph_id": "para-4bd5b4502c7989685c7955d1"
+          },
+          {
+            "text": "History",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-f6ea1f50add87d5ea2a07313"
+          },
+          {
+            "text": "I want to learn Python. Do you have any suggestions?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-98ac8eaff79f377bf8b4eb30"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-3adeebbf06079d0e2bdd2e46"
+          },
+          {
+            "text": "recall",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-73786a80deec574a9738d3a3"
+          },
+          {
+            "text": "I suggest you try the \"Automate the Boring Stuff\nwith Python“, which is a highly recommended book.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-5d8cfe6da90cb48e2c1ebe80"
+          },
+          {
+            "text": "SiliconFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-64aade2bd31e37ba9f57b851"
+          },
+          {
+            "text": "Please write a quicksort program for me.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-30cb8eab7f105b37c8a5596d"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-1ed0235ed46e4da9afdd46d4"
+          },
+          {
+            "text": "recall\nThis is a classic algorithm that can sort elements in\nO(nlogn) time. Here is its code:…\n(Due to space limitations, the code section is omitted)",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-e86947ba2ad78a9fdae129a4"
+          },
+          {
+            "text": "SiliconFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-55b6363a0d5f6a51400efec2"
+          },
+          {
+            "text": "Current Conversation",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-18558677b38d165f26f632b0"
+          },
+          {
+            "text": "You once recommend a book to me, what’s its name?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-e36845c53b70b017829ee206"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-b429f040a144938ae2978e16"
+          },
+          {
+            "text": "Its name is  \"Automate the Boring Stuff with Python“.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-da05931f02bfcf89b5cc0c46"
+          },
+          {
+            "text": "SiliconFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-fbfff4fb8a52474f62f8000e"
+          },
+          {
+            "text": "What kind of code did I ask you to write before?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-811f1eca3776a8e616d2575d"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-f779bb99dc017da53989931b"
+          },
+          {
+            "text": "You once requested me to write a code for quicksort.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-aae02b7c5713f5f44f65c73e"
+          },
+          {
+            "text": "SiliconFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-f95d55ef0afe45b06e18a721"
+          },
+          {
+            "text": "Did we write the heap sort algorithm together?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-54c75f32633afe2368b277fc"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-f38b6d9862eb275fa70c8f82"
+          },
+          {
+            "text": "No, we didn’t write a program for heap sort together.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-aab76cba29fd973ce540d6a3"
+          },
+          {
+            "text": "SiliconFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-7879382a436fe11c1293af86"
+          },
+          {
+            "text": "Figure 3: Example responses from SiliconFriend BELLE in memory recall.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-52510c5849ff1041c944962f"
+          },
+          {
+            "text": "Linda is an introverted, determined, ambitious, and responsible girl who values\npersonal growth, exploring new cultures and hobbies, and seeking advice from others.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-e94ae2f410b7ec929c6a5b43"
+          },
+          {
+            "text": "What do you know about me?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-95193f9392767690c79de3cc"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-0d7c44b3b74e4e320a08a22d"
+          },
+          {
+            "text": "Based on our interactions and your past conversations, I know\nthat you are an introverted person who values personal growth,\ndetermination, ambition, and responsibility. You have a keen\ninterest in exploring new cultures, trying out new hobbies, and\nseeking advice from others. Is there anything else about you that\nyou would like me to know?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-d94d4c743e4159da2ff86eac"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-f28ebbd2b630fff3742e35af"
+          },
+          {
+            "text": "I'm considering engaging in some activities over the\nweekend. Could you provide some suggestions?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-1ccf5dd526930fb949bd677a"
+          },
+          {
+            "text": "Linda",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-92b60bcd0011af1b8f9bc4b0"
+          },
+          {
+            "text": "Absolutely! Based on your interests in exploring new cultures\nand trying out new hobbies, here are some suggestions for you:\n1. Attend a cooking class to learn how to make dishes from a\ndifferent cuisine.\n2. Visit a museum or art exhibition to explore a new culture or\ngain insights into a different art form.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-aa6074afca74e399f23ac046"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-76a0b7d0fd9f240cd63a71e6"
+          },
+          {
+            "text": "Emily is an open-minded and curious girl with lots of interests. While she is receptive\nto advice, she sometimes experiences self-doubt and uncertainty about her future.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-c484a56f8c28ca9d1809d52b"
+          },
+          {
+            "text": "What do you know about me?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-7d3523ff330a22ac9d940e92"
+          },
+          {
+            "text": "Emily",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-0b7c49260b4a5c861b273815"
+          },
+          {
+            "text": "You seem open-minded and receptive to advice. If you'd like to\nshare more about your interests or anything else, feel free to let\nme know and I'll do my best to help!",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-2340c5575459420586969d66"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-ce4570bb25d493929f0c96aa"
+          },
+          {
+            "text": "I'm considering engaging in some activities over the\nweekend. Could you provide some suggestions?",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-2d286099c24ea32cbf903c8c"
+          },
+          {
+            "text": "Emily",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-dea0ea4ecf13730b4b7289c1"
+          },
+          {
+            "text": "Of course! It's great that you're interested in doing something\nthis weekend. Depending on what you enjoy, there are many\nfun and engaging activities to do. For example, if you're\ninterested in the outdoors, you might consider going hiking or\ntaking a bike ride. If music is more your thing, check out local\nconcerts or learn a new instrument. Ultimately, it's important to\nfind something that you enjoy and that also allows you to\nrecharge and relax. Whatever you decide to do, make sure it\naligns with your interests and leaves you feeling refreshed!",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-40dfdfc514da979cf55b159e"
+          },
+          {
+            "text": "Silicon\nFriend",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-cf98442e7c73c8bf57e3b903"
+          },
+          {
+            "text": "Figure 4: Example responses from SiliconFriend ChatGPT to users with different personalities.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-804126fbf9186a93197bf252"
+          },
+          {
+            "text": "users, we compared the responses shown by SiliconFriend with that of the baseline LLMs in real-\nworld conversations. As demonstrated in Fig. 2, when a user expresses emotional difﬁculties and\nseeks assistance from SiliconFriend, the model is capable of delivering empathetic responses along\nwith constructive suggestions. SiliconFriend’s responses stand out due to their emotional support,\nshowcasing a stark contrast to its baseline ChatGLM.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-a7f046ab5c30161ec715d96b"
+          },
+          {
+            "text": "Memory Recall Analysis\nTo evaluate SiliconFriend’s ability in memory recall, we integrate mem-\nory probing questions into the dialogues. These questions are designed to prompt SiliconFriend\nto retrieve speciﬁc details from the chat history. As shown in Fig. 3, the user and SiliconFriend\nengaged in a discussion about programming learning suggestions. Several days later, the user posed\nseveral memory probing questions. SiliconFriend successfully recalled previously suggested book\nand algorithm. Furthermore, it correctly identiﬁed an event (i.e., the heap sort algorithm) that had not\nbeen discussed before. These instances underscore SiliconFriend’s successful memory recall and\nrecognition capabilities.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-16f7410e0c073a22b46dbdf7"
+          },
+          {
+            "text": "Personality Interaction Analysis\nAs shown in Fig. 4, we examine the capability of SiliconFriend\nwith users of diverse personalities. We observe that it effectively recommend activities tailored to\nusers’ interests based on their character traits. This analysis demonstrates SiliconFriend’s ability to\ndraw interact effectively with various user personalities.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-62832df491fa79d91cb1ba69"
+          }
+        ],
+        "section_id": "sec-12689a272516358edaaa5d34",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "4.2 Quantitative Analysis",
+        "page_end": 9,
+        "page_start": 7,
+        "paragraphs": [
+          {
+            "text": "Quantitative analysis is conducted to exemplify the memory recall ability of SiliconFriend in a larger\nscale. We ask the human annotators to score the retrieved memories and responses from the models:\n(1) SiliconFriend ChatGPT; (2) SiliconFriend ChatGLM; (3) SiliconFriend BELLE.",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-eaba35b82c070895cfce22d7"
+          },
+          {
+            "text": "Memory Storage Construction:\nWe initially establish an evaluation foundation with a memory\nstorage of 10 days of conversations involving 15 virtual users. These users have diverse personalities",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-e59135e5569b3d26ea38b0d0"
+          },
+          {
+            "text": "7",
+            "page_end": 7,
+            "page_start": 7,
+            "paragraph_id": "para-af05ed8ac49ff831d99d11ae"
+          },
+          {
+            "text": "Table 1: An example of one memory piece (on May 3th) in the memory bank, and corresponding\nprobing question asked on May 10th. The outputs from three variances of SiliconFriend are shown\nfor comparison. All these models answer correctly and coherently.",
+            "page_end": 8,
+            "page_start": 8,
+            "paragraph_id": "para-d7fc70da0f4fc59147f84baa"
+          },
+          {
+            "text": "Meta-information  Name: Gary   Hobbies: racing, business, chess, painting, wine\n  of User:            Personality: decisive and straightforward, outspoken, helpful\n  Past Conversation:  User: I’ve been feeling a bit stressed out lately and my sleep hasn’t been great. Do you\n (May 3th)          have any good ways to relieve stress?\n                    AI: It’s true that prolonged work or life stress can affect our physical and mental health.\n                    There are many ways to relieve stress, such as doing moderate exercise, listening to\n                      music, reading, talking to friends, etc. You can try to add more entertainment and leisure\n                          activities into your daily life, and reduce work pressure and negative effects.\n                                     ...\n                    (The rest of conversation cover topics about movies and TV shows recommendations.)\n Probing Question:  What good ways did you recommend me to relieve stress?\n (May 10th)\n Model Output:        I recommended that you try doing some moderate exercise, listening to music, reading,\n  SiliconFriend       talking to friends, or adding more entertainment and leisure activities into your daily\n (ChatGLM)           life to reduce work pressure and negative effects. You can also try to add more of these\n                       things into your life in moderation, as it is important to balance things out and not overdo\n                                   it. If you are still feeling stressed, I would recommend seeking the help of a professional\n                      counselor or therapist who can provide further guidance and support.\n Model Output:        I recommended some ways to relieve stress such as doing moderate exercise, listening to\n  SiliconFriend       music, reading, talking to friends, etc. You can try to add more entertainment and leisure\n (BELLE)             activities into your daily life, and reduce work pressure and negative effects.\n Model Output:     Based on our past conversations, I suggested doing moderate exercise, listening to music,\n  SiliconFriend       reading, talking to friends, and adding more leisure activities to your daily life as good\n (ChatGPT)        ways to relieve stress. Exercise can help release endorphins and boost your mood, while\n                   music and reading can provide a mental escape from stress. Talking to friends can also\n                      help alleviate stress by providing a social support system. Lastly, adding leisure activities\n                        to your daily routine can be a fun and effective way of reducing stress levels.",
+            "page_end": 8,
+            "page_start": 8,
+            "paragraph_id": "para-94e28eb020386cc585993ac9"
+          },
+          {
+            "text": "and dialogue on each day covers at least two topics. User meta-information, including names,\npersonalities, and interested topics is generated using ChatGPT. Conversations are synthesized by\nusers acted by ChatGPT based on predeﬁned topics and user personalities. We create memory\nstorages in both English and Chinese. After memory storage construction, we manually write 194\nprobing questions (97 in English and 97 in Chinese) to assess whether the model could accurately\nrecall pertinent memory and appropriately formulate answers. Table 1 presents an example of user\nmeta-information, generated conversations, and probing questions.",
+            "page_end": 8,
+            "page_start": 8,
+            "paragraph_id": "para-895a7a0d49446186d9a8e5db"
+          },
+          {
+            "text": "Evaluation Metrics  The performance of models is assessed based on the following metrics. (1)\nMemory Retrieval Accuracy: Determines if related memory can be successfully retrieved (labels:\n{0 : no, 1 : yes}). (2) Response Correctness: Evaluates if the response contains the correct answer\nto the probing question (labels: {0 : wrong, 0.5 : partial, 1 : correct}). (3) Contextual Coherence:\nAssesses whether the response is naturally and coherently structured, connecting the dialogue\ncontext and retrieved memory (labels: 0 : not coherent, 0.5 : partially coherent, 1 : coherent).  (4)\nModel Ranking Score: Ranks outputs from the three SiliconFriend variants (SiliconFriend ChatGLM,\nSiliconFriend ChatGPT, and SiliconFriend BELLE) for the same question and context. Models’ scores\nare calculated using s = 1/r, where r = 1, 2, 3 indicates its relative ranking.",
+            "page_end": 8,
+            "page_start": 8,
+            "paragraph_id": "para-478cd312f045c6f894236eaf"
+          },
+          {
+            "text": "Result Analysis. We evaluate 3 SiliconFriend variants using both English and Chinese test set.\nTable 2 yields the following insights: (1) Our overall best variant SiliconFriend ChatGPT has high\nperformance across all metrics, showing the effectiveness of our overall framework. (2) SiliconFriend\nBELLE and SiliconFriend ChatGLM also have high performance in retrieval accuracy, showing the\ngenerality and effectiveness of our MemoryBank mechanism for both open-source and closed-source\nLLMs. Nonetheless, their performance on other metrics is not as good as SiliconFriend ChatGPT.\nThis might be attributed to the inferior overall abilities of the base models (BELLE and ChatGLM)\ncompared to ChatGPT. (3) Models’ performance varies on different languages. SiliconFriend ChatGLM\nand SiliconFriend ChatGPT deliver better results in English, while SiliconFriend BELLE excells in\nChinese.",
+            "page_end": 8,
+            "page_start": 8,
+            "paragraph_id": "para-119e03297efead47be29f3a8"
+          },
+          {
+            "text": "8",
+            "page_end": 8,
+            "page_start": 8,
+            "paragraph_id": "para-bd7ce732bf4738b9694471f5"
+          },
+          {
+            "text": "Table 2: Results of quantitative analysis.",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-3b08d606a660a8fc4d837f1f"
+          },
+          {
+            "text": "Language        Model           Retrieval Acc.   Correctness   Coherence   Ranking",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-da7630fe10e6cc61120fac8a"
+          },
+          {
+            "text": "SiliconFriend ChatGLM           0.809        0.438         0.68     0.498\n         English     SiliconFriend BELLE            0.814        0.479       0.582     0.517\n                     SiliconFriend ChatGPT           0.763        0.716       0.912     0.818",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-7347318944d3b6b30914c04e"
+          },
+          {
+            "text": "SiliconFriend ChatGLM            0.84        0.418       0.428       0.51\n        Chinese     SiliconFriend BELLE            0.856        0.603       0.562     0.565\n                     SiliconFriend ChatGPT           0.711        0.655       0.675     0.758",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-639c66816dbbe35add487c25"
+          }
+        ],
+        "section_id": "sec-2d8a5958d7affc1f886f391f",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "5  Related Works",
+        "page_end": 9,
+        "page_start": 9,
+        "paragraphs": [
+          {
+            "text": "Large Language Models:  LLMs such as GPT-3 (Brown et al., 2020), OPT (Zhang et al., 2022),\nand FLAN-T5 (Chung et al., 2022) have made remarkable strides in a broad spectrum of natural\nlanguage processing tasks in recent years. Recently, cutting-edge closed-source language models,\nlike PaLM (Chowdhery et al., 2022), GPT-4 (OpenAI, 2023) and ChatGPT (OpenAI, 2022), continue\nto display substantial ﬂexibility, adapting to a wide variety of domains. They have increasingly\nbecome daily decision-making aids for many people. However, the close-source nature of these\nmodels prohibit the researchers and companies to study the inner mechanism of LLMs and built\ndomain-adapted applications. Therefore, many open-source LLMs emerged in the community, like\nLLaMa (Touvron et al., 2023), ChatGLM (Zeng et al., 2022) and Alpaca (Taori et al., 2023). For more\ndetails, we refer readers to this comprehensive review: Zhao et al. (2023). Nevertheless, these models\nstill have shortcomings. A noticeable gap lies in their deﬁciency in a robust long-term memory\nfunction. This limitation hinders their ability to maintain context over a long period and retrieve\npertinent information from past interactions. Our research steps in here, with the primary objective of\ndeveloping long-term memory mechanism for LLMs.",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-10e1286eba2a2b11a9aadad8"
+          },
+          {
+            "text": "Long-term Memory Mechanisms:  Numerous attempts have been made to enhance the memory\ncapabilities of neural models. Memory-augmented networks (MANNs) (Meng & Huang, 2018;\nGraves et al., 2014) like Neural Turing Machines (NTMs)(Graves et al., 2014) is an example of this,\ndesigned to increase the memory capacity of neural networks. These models are structured to interact\nwith an external memory matrix, enabling them to handle tasks that necessitate the maintenance and\nmanipulation of stored information over extended periods. Despite showing potential, these methods\nhave not fully addressed the need for a reliable and adaptable long-term memory function in LLMs.\nThere have also been studies focusing on long-range conversations (Xu et al., 2021, 2022). For\ninstance, Xu et al. (2021) introduced a new English dataset comprised of multi-session human-human\ncrowdworker chats for long-term conversations. However, these conversations are generally restricted\nto a few rounds of conversation, which can not align with the application scenarios of long-term AI\ncompanions. Moreover, these models often fail to create a detailed user portrait and lack a human-like\nmemory updating mechanism, both crucial for facilitating more natural interactions. The concept\nof memory updating has been extensively researched in psychology. The Forgetting Curve theory\nby Ebbinghaus (1964) offers valuable insights into the pattern of memory retention and forgetting\nover time. Taking inspiration from this theory, we integrate a memory updating mechanism into\nMemoryBank to bolster its long-term memory function.",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-412c1e7db939386a62b0b030"
+          },
+          {
+            "text": "In summary, while signiﬁcant progress has been made in the ﬁeld of LLMs, there is still a need\nfor long-term memory mechanism to empower LLMs in the scenarios requiring personalized and\npersistent interactions. Our work presents MemoryBank as a novel approach to address this challenge.",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-6d7f8f03c6adb216b8eccaf2"
+          }
+        ],
+        "section_id": "sec-f40dafb91859860c47105b38",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "6  Conclusion",
+        "page_end": 10,
+        "page_start": 9,
+        "paragraphs": [
+          {
+            "text": "We present MemoryBank, a novel long-term memory mechanism designed to address the memory\nlimitation of LLMs. MemoryBank enhances the ability to maintain context over time, recall relevant\ninformation, and understand user personality. Besides, the memory updating mechanism of Memo-\nryBank draws inspiration from the Ebbinghaus Forgetting Curve theory, a psychological principle\nthat describes the nature of memory retention and forgetting over time. This design improves the\nanthropomorphism of AI in long-term interactions scenarios. The versatility of MemoryBank is",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-3eb5eb6c1e7ad470a3c94d0b"
+          },
+          {
+            "text": "9",
+            "page_end": 9,
+            "page_start": 9,
+            "paragraph_id": "para-50b573e5733a4d8c089ba592"
+          },
+          {
+            "text": "demonstrated through its accommodation of both open-source models such as ChatGLM and BELLE,\nand close-source models like ChatGPT.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-2082ec49aa92a75d070b3c8d"
+          },
+          {
+            "text": "We further illustrate the practical application of MemoryBank through the development of Silicon-\nFriend, an LLM-based chatbot designed to serve as a long-term AI companion. Equipped with\nMemoryBank, SiliconFriend can establish a deeper understanding of users, offering more person-\nalized and meaningful interactions, emphasizing the potential for MemoryBank to humanize AI\ninteractions. The tuning of SiliconFriend with psychological dialogue data enables it to provide\nempathetic emotional support. Extensive experiments including both qualitative and quantitative\nmethods validate the effectiveness of MemoryBank. The ﬁndings demonstrate that MemoryBank\nempowers SiliconFriend with memory recall capabilities and deepens the understanding of user\nbehaviors. Besides, SiliconFriend can provide empathetic companionship of higher quality.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-a29cd3b282785d5ccb103eab"
+          }
+        ],
+        "section_id": "sec-5148e5bc237f92711491debd",
+        "extraction_status": "partial"
+      },
+      {
+        "kind": "identified_heading",
+        "heading": "References",
+        "page_end": 11,
+        "page_start": 10,
+        "paragraphs": [
+          {
+            "text": "Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, Prafulla Dhariwal,\n  Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et al. Language models are\n  few-shot learners. Advances in neural information processing systems, 33:1877–1901, 2020.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-0f13c02c2bc8f58a65dfbcef"
+          },
+          {
+            "text": "Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, Gaurav Mishra, Adam\n  Roberts, Paul Barham, Hyung Won Chung, Charles Sutton, Sebastian Gehrmann, et al. Palm:\n  Scaling language modeling with pathways. arXiv preprint arXiv:2204.02311, 2022.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-66ef208563828882d7bc422f"
+          },
+          {
+            "text": "Hyung Won Chung, Le Hou, Shayne Longpre, Barret Zoph, Yi Tay, William Fedus, Eric Li, Xuezhi\n  Wang, Mostafa Dehghani, Siddhartha Brahma, et al. Scaling instruction-ﬁnetuned language models.\n  arXiv preprint arXiv:2210.11416, 2022.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-bf1e0ab9d36c54f00e3e4c96"
+          },
+          {
+            "text": "H Ebbinghaus. Memory: A contribution to experimental, 1964.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-095d3166e1c2d033183f96b4"
+          },
+          {
+            "text": "Alex Graves, Greg Wayne, and Ivo Danihelka.   Neural turing machines.   arXiv preprint\n  arXiv:1410.5401, 2014.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-6d1bf665d1930b2a2a4c91f9"
+          },
+          {
+            "text": "Edward Hu, Yelong Shen, Phil Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Lu Wang, and Weizhu Chen.\n  Lora: Low-rank adaptation of large language models, 2021.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-4bd45dcbfa205dc1654ed927"
+          },
+          {
+            "text": "Jeff Johnson, Matthijs Douze, and Hervé Jégou. Billion-scale similarity search with GPUs. IEEE\n  Transactions on Big Data, 7(3):535–547, 2019.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-d5151c1a74c781cbca96baaf"
+          },
+          {
+            "text": "Vladimir Karpukhin, Barlas O˘guz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey Edunov, Danqi\n  Chen, and Wen-tau Yih. Dense passage retrieval for open-domain question answering. arXiv\n   preprint arXiv:2004.04906, 2020.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-c6a1fed1296b2f1307ef0bd5"
+          },
+          {
+            "text": "LangChain Inc. Langchain, 2022. https://docs.langchain.com/docs/.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-7d017ec3acb972a782cb79c1"
+          },
+          {
+            "text": "Lian Meng and Minlie Huang. Dialogue intent classiﬁcation with long short-term memory networks.\n  In Natural Language Processing and Chinese Computing: 6th CCF International Conference,\n  NLPCC 2017, Dalian, China, November 8–12, 2017, Proceedings 6, pp. 42–50. Springer, 2018.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-8d59765e2e801e3897ca5c9e"
+          },
+          {
+            "text": "Xu Ming. text2vec: A tool for text to vector, 2022. URL https://github.com/shibing624/\n  text2vec.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-3693d9bc11f04d1aa756b9e9"
+          },
+          {
+            "text": "OpenAI. Chatgpt, 2022. https://chat.openai.com/chat.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-3a0dc57f4bdf45219a599d1d"
+          },
+          {
+            "text": "OpenAI. Gpt-4 technical report, 2023.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-a82f511984b51b795c4a1a4f"
+          },
+          {
+            "text": "Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy\n  Liang, and Tatsunori B. Hashimoto.  Stanford alpaca: An instruction-following llama model.\n  https://github.com/tatsu-lab/stanford_alpaca, 2023.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-9509a2a2299c62c0e5887bc9"
+          },
+          {
+            "text": "Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée\n  Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, et al. Llama: Open and\n   efﬁcient foundation language models. arXiv preprint arXiv:2302.13971, 2023.",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-5306c9ebd80d63be464b4fa6"
+          },
+          {
+            "text": "10",
+            "page_end": 10,
+            "page_start": 10,
+            "paragraph_id": "para-883a663fadcdcc20d46a26f3"
+          },
+          {
+            "text": "Wenhui Wang, Furu Wei, Li Dong, Hangbo Bao, Nan Yang, and Ming Zhou. Minilm: Deep self-\n   attention distillation for task-agnostic compression of pre-trained transformers. Advances in Neural\n  Information Processing Systems, 33:5776–5788, 2020.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-1213e9203af0de22e0a3b4bb"
+          },
+          {
+            "text": "Jing Xu, Arthur Szlam, and Jason Weston. Beyond goldﬁsh memory: Long-term open-domain\n  conversation. arXiv preprint arXiv:2107.07567, 2021.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-ebf115da335fc389e7e6685d"
+          },
+          {
+            "text": "Xinchao Xu, Zhibin Gou, Wenquan Wu, Zheng-Yu Niu, Hua Wu, Haifeng Wang, and Shihang Wang.\n  Long time no see! open-domain conversation with long-term persona memory. arXiv preprint\n  arXiv:2203.05797, 2022.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-3a35520d7524769bb5fb4856"
+          },
+          {
+            "text": "Yan Gong Yiping Peng Qiang Niu Baochang Ma Yunjie Ji, Yong Deng and Xiangang Li. Belle: Be\n  everyone’s large language model engine. https://github.com/LianjiaTech/BELLE, 2023.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-936d1b2951054469d3cdc02b"
+          },
+          {
+            "text": "Aohan Zeng, Xiao Liu, Zhengxiao Du, Zihan Wang, Hanyu Lai, Ming Ding, Zhuoyi Yang, Yifan Xu,\n  Wendi Zheng, Xiao Xia, et al. Glm-130b: An open bilingual pre-trained model. arXiv preprint\n  arXiv:2210.02414, 2022.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-55b78ccce6d2319f9822828c"
+          },
+          {
+            "text": "Susan Zhang, Stephen Roller, Naman Goyal, Mikel Artetxe, Moya Chen, Shuohui Chen, Christopher\n  Dewan, Mona Diab, Xian Li, Xi Victoria Lin, et al. Opt: Open pre-trained transformer language\n  models. arXiv preprint arXiv:2205.01068, 2022.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-387c4db48d2fe5732071e25e"
+          },
+          {
+            "text": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min,\n  Beichen Zhang, Junjie Zhang, Zican Dong, et al. A survey of large language models. arXiv\n  preprint arXiv:2303.18223, 2023.",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-c0fd7774d305ef124964a32b"
+          },
+          {
+            "text": "11",
+            "page_end": 11,
+            "page_start": 11,
+            "paragraph_id": "para-070f8d9e2abfa9174e10f558"
+          }
+        ],
+        "section_id": "sec-a405f06f0b5e1cc812df2c19",
+        "extraction_status": "partial"
+      }
+    ],
+    "extraction_status": "partial"
+  },
+  "source_id": "2305.10250",
+  "categories": [
+    "cs.CL",
+    "cs.AI"
+  ],
+  "provenance": {
+    "license": null,
+    "pdf_url": "https://arxiv.org/pdf/2305.10250v3",
+    "pdf_path": "D:\\ResearchMemory\\storage\\pdfs\\arxiv\\2305.10250v3.pdf",
+    "pdf_sha256": "6c60f7f95a872de85179b770edaba584da7a30da37490522394a3e4888aa0059",
+    "year_basis": "arxiv_first_submitted_date",
+    "reused_text": true,
+    "topic_group": "memory",
+    "abstract_url": "https://arxiv.org/abs/2305.10250v3",
+    "arxiv_version": "v3",
+    "license_status": "unknown",
+    "metadata_sha256": "9cf857809869912b146f6f7f3a81d2839cc425f11756fd8c430016bb560f3368",
+    "metadata_source": "arxiv_atom_api",
+    "processed_at_utc": "2026-10-23T18:09:41.895410+00:00",
+    "enrichment_parser": "pymupdf-layout-enrichment-1.2",
+    "raw_record_sha256": "21e90694f94508933423d54ebaf8a580bb255d38f940866decfe9208f724342e",
+    "abstract_separated": false,
+    "text_normalization": [],
+    "raw_extraction_path": "datasets/processed/arxiv_master.jsonl",
+    "raw_extraction_source": "postgresql.paper_master_sources",
+    "layout_reordered_pages": [
+      6,
+      7
+    ]
+  },
+  "references": [
+    {
+      "doi": null,
+      "year": 2004,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2004.04906",
+      "reference_id": "ref-91d4a8d07f99bacbebac2862",
+      "raw_reference": "Vladimir Karpukhin, Barlas O˘guz, Sewon Min, Patrick Lewis, Ledell Wu, Sergey Edunov, Danqi\n  Chen, and Wen-tau Yih. Dense passage retrieval for open-domain question answering. arXiv\n   preprint arXiv:2004.04906, 2020.",
+      "target_paper_id": "arxiv:2004.04906",
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "resolved"
+    },
+    {
+      "doi": null,
+      "year": 1901,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-ca4fe0409e705e6f4162ea3a",
+      "raw_reference": "Tom Brown, Benjamin Mann, Nick Ryder, Melanie Subbiah, Jared D Kaplan, Prafulla Dhariwal,\n  Arvind Neelakantan, Pranav Shyam, Girish Sastry, Amanda Askell, et al. Language models are\n  few-shot learners. Advances in neural information processing systems, 33:1877–1901, 2020.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2204.02311",
+      "reference_id": "ref-5f4cbd2e39916fddb3fc3e72",
+      "raw_reference": "Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, Gaurav Mishra, Adam\n  Roberts, Paul Barham, Hyung Won Chung, Charles Sutton, Sebastian Gehrmann, et al. Palm:\n  Scaling language modeling with pathways. arXiv preprint arXiv:2204.02311, 2022.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2210.11416",
+      "reference_id": "ref-836e34b5b8364e309da6fb45",
+      "raw_reference": "Hyung Won Chung, Le Hou, Shayne Longpre, Barret Zoph, Yi Tay, William Fedus, Eric Li, Xuezhi\n  Wang, Mostafa Dehghani, Siddhartha Brahma, et al. Scaling instruction-ﬁnetuned language models.\n  arXiv preprint arXiv:2210.11416, 2022.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 1964,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-cc0beafe15cf1ebfa22131bb",
+      "raw_reference": "H Ebbinghaus. Memory: A contribution to experimental, 1964.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2014,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "1410.5401",
+      "reference_id": "ref-0bedb4e88538d4abed67b807",
+      "raw_reference": "Alex Graves, Greg Wayne, and Ivo Danihelka.   Neural turing machines.   arXiv preprint\n  arXiv:1410.5401, 2014.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2021,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-8d7be37fc1be8e3572feda2b",
+      "raw_reference": "Edward Hu, Yelong Shen, Phil Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Lu Wang, and Weizhu Chen.\n  Lora: Low-rank adaptation of large language models, 2021.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2019,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-f3f1e5ecd3d5ea789f6d2db3",
+      "raw_reference": "Jeff Johnson, Matthijs Douze, and Hervé Jégou. Billion-scale similarity search with GPUs. IEEE\n  Transactions on Big Data, 7(3):535–547, 2019.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-0eb5fc0c4b82612947991080",
+      "raw_reference": "LangChain Inc. Langchain, 2022. https://docs.langchain.com/docs/.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2017,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-48a21d217bba3430eac20236",
+      "raw_reference": "Lian Meng and Minlie Huang. Dialogue intent classiﬁcation with long short-term memory networks.\n  In Natural Language Processing and Chinese Computing: 6th CCF International Conference,\n  NLPCC 2017, Dalian, China, November 8–12, 2017, Proceedings 6, pp. 42–50. Springer, 2018.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-c4b5097a09134b70d933c279",
+      "raw_reference": "Xu Ming. text2vec: A tool for text to vector, 2022. URL https://github.com/shibing624/\n  text2vec.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-c93f6953ef3f3279d3851028",
+      "raw_reference": "OpenAI. Chatgpt, 2022. https://chat.openai.com/chat.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2023,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-811441e1a692c6daf3419c6a",
+      "raw_reference": "OpenAI. Gpt-4 technical report, 2023.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2023,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-0ed1723eb177efe68708bd7a",
+      "raw_reference": "Rohan Taori, Ishaan Gulrajani, Tianyi Zhang, Yann Dubois, Xuechen Li, Carlos Guestrin, Percy\n  Liang, and Tatsunori B. Hashimoto.  Stanford alpaca: An instruction-following llama model.\n  https://github.com/tatsu-lab/stanford_alpaca, 2023.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2023,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2302.13971",
+      "reference_id": "ref-d5e2a6373ef633b47d985266",
+      "raw_reference": "Hugo Touvron, Thibaut Lavril, Gautier Izacard, Xavier Martinet, Marie-Anne Lachaux, Timothée\n  Lacroix, Baptiste Rozière, Naman Goyal, Eric Hambro, Faisal Azhar, et al. Llama: Open and\n   efﬁcient foundation language models. arXiv preprint arXiv:2302.13971, 2023.\n\n10",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2020,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-5723a663e6633b59e675202b",
+      "raw_reference": "Wenhui Wang, Furu Wei, Li Dong, Hangbo Bao, Nan Yang, and Ming Zhou. Minilm: Deep self-\n   attention distillation for task-agnostic compression of pre-trained transformers. Advances in Neural\n  Information Processing Systems, 33:5776–5788, 2020.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2021,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2107.07567",
+      "reference_id": "ref-3c436bf4fb53f381fd81f5c1",
+      "raw_reference": "Jing Xu, Arthur Szlam, and Jason Weston. Beyond goldﬁsh memory: Long-term open-domain\n  conversation. arXiv preprint arXiv:2107.07567, 2021.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2203.05797",
+      "reference_id": "ref-e2b203f55292e62e7f81b77e",
+      "raw_reference": "Xinchao Xu, Zhibin Gou, Wenquan Wu, Zheng-Yu Niu, Hua Wu, Haifeng Wang, and Shihang Wang.\n  Long time no see! open-domain conversation with long-term persona memory. arXiv preprint\n  arXiv:2203.05797, 2022.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2023,
+      "title": null,
+      "authors": [],
+      "arxiv_id": null,
+      "reference_id": "ref-8eb359376902b6e824e0e633",
+      "raw_reference": "Yan Gong Yiping Peng Qiang Niu Baochang Ma Yunjie Ji, Yong Deng and Xiangang Li. Belle: Be\n  everyone’s large language model engine. https://github.com/LianjiaTech/BELLE, 2023.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2210.02414",
+      "reference_id": "ref-6b8c4e2022dfdefaa094f596",
+      "raw_reference": "Aohan Zeng, Xiao Liu, Zhengxiao Du, Zihan Wang, Hanyu Lai, Ming Ding, Zhuoyi Yang, Yifan Xu,\n  Wendi Zheng, Xiao Xia, et al. Glm-130b: An open bilingual pre-trained model. arXiv preprint\n  arXiv:2210.02414, 2022.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2022,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2205.01068",
+      "reference_id": "ref-9292e1e77194b9ca80411962",
+      "raw_reference": "Susan Zhang, Stephen Roller, Naman Goyal, Mikel Artetxe, Moya Chen, Shuohui Chen, Christopher\n  Dewan, Mona Diab, Xian Li, Xi Victoria Lin, et al. Opt: Open pre-trained transformer language\n  models. arXiv preprint arXiv:2205.01068, 2022.",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    },
+    {
+      "doi": null,
+      "year": 2023,
+      "title": null,
+      "authors": [],
+      "arxiv_id": "2303.18223",
+      "reference_id": "ref-974ad1cd75052ec78f0ba37b",
+      "raw_reference": "Wayne Xin Zhao, Kun Zhou, Junyi Li, Tianyi Tang, Xiaolei Wang, Yupeng Hou, Yingqian Min,\n  Beichen Zhang, Junjie Zhang, Zican Dong, et al. A survey of large language models. arXiv\n  preprint arXiv:2303.18223, 2023.\n\n11",
+      "target_paper_id": null,
+      "citation_contexts": [],
+      "extraction_status": "partial",
+      "resolution_status": "unresolved"
+    }
+  ],
+  "identifiers": {
+    "doi": null,
+    "arxiv_id": "2305.10250",
+    "openalex_id": null,
+    "arxiv_version": "v3"
+  },
+  "publication": {
+    "venue": null,
+    "journal_reference": null,
+    "arxiv_updated_date": "2023-05-21T06:20:28Z",
+    "publication_status": "preprint",
+    "journal_publication_date": null,
+    "journal_publication_year": null,
+    "arxiv_first_submitted_date": "2023-05-17T14:40:29Z"
+  },
+  "canonical_id": "arxiv:2305.10250",
+  "has_full_text": true,
+  "schema_version": "2.1",
+  "citation_markers": [],
+  "research_metadata": {
+    "methods": [],
+    "metrics": [],
+    "datasets": [],
+    "claimed_contributions": []
+  },
+  "extraction_quality": {
+    "parser": "pymupdf",
+    "status": "full_text",
+    "criteria": ">=800 words; >=4000 chars and 3x abstract; >=2 pages of 80 words; >=98% printable",
+    "page_count": 11,
+    "text_pages": 11,
+    "word_count": 6918,
+    "tables_status": "captions_only",
+    "figures_status": "partial",
+    "parser_revision": "pymupdf-fallback-v2.1",
+    "printable_ratio": 1.0,
+    "structure_status": "page_fallback",
+    "references_status": "partial"
+  },
+  "figures_and_tables": [
+    {
+      "data": null,
+      "page": 3,
+      "text": null,
+      "type": "figure",
+      "label": "Figure 1",
+      "caption": "Overview of MemoryBank. The memory storage (§ 2.1) stores past conversations, summa-",
+      "item_id": "figure-5c1fbf5564d0393329a1d54f",
+      "figure_id": "figure-5c1fbf5564d0393329a1d54f",
+      "image_path": null,
+      "section_id": null,
+      "description": null,
+      "source_bbox": null,
+      "detection_status": "unverified_caption_or_cells",
+      "extraction_status": "partial"
+    },
+    {
+      "data": null,
+      "page": 6,
+      "text": null,
+      "type": "figure",
+      "label": "Figure 2",
+      "caption": "Example of consulting SiliconFriend ChatGLM for psychological companionship. Overall,",
+      "item_id": "figure-9a8f25886e065b4d20e39407",
+      "figure_id": "figure-9a8f25886e065b4d20e39407",
+      "image_path": null,
+      "section_id": null,
+      "description": null,
+      "source_bbox": null,
+      "detection_status": "unverified_caption_or_cells",
+      "extraction_status": "partial"
+    },
+    {
+      "data": null,
+      "page": 8,
+      "rows": [],
+      "text": null,
+      "type": "table",
+      "label": "Table 1",
+      "units": null,
+      "caption": "An example of one memory piece (on May 3th) in the memory bank, and corresponding",
+      "headers": [],
+      "item_id": "table-1413e210a197691a4b5ef13c",
+      "raw_text": null,
+      "table_id": "table-1413e210a197691a4b5ef13c",
+      "image_path": null,
+      "section_id": "sec-2d8a5958d7affc1f886f391f",
+      "source_bbox": null,
+      "header_status": "unverified",
+      "detection_status": "unverified_caption_or_cells",
+      "extraction_status": "partial"
+    },
+    {
+      "data": null,
+      "page": 8,
+      "rows": [],
+      "text": null,
+      "type": "table",
+      "label": "Table 2",
+      "units": null,
+      "caption": "yields the following insights: (1) Our overall best variant SiliconFriend ChatGPT has high",
+      "headers": [],
+      "item_id": "table-55eb224cc54a85401e9f8d66",
+      "raw_text": null,
+      "table_id": "table-55eb224cc54a85401e9f8d66",
+      "image_path": null,
+      "section_id": "sec-2d8a5958d7affc1f886f391f",
+      "source_bbox": null,
+      "header_status": "unverified",
+      "detection_status": "unverified_caption_or_cells",
+      "extraction_status": "partial"
+    },
+    {
+      "data": null,
+      "page": 9,
+      "rows": [],
+      "text": null,
+      "type": "table",
+      "label": "Table 2",
+      "units": null,
+      "caption": "Results of quantitative analysis.",
+      "headers": [],
+      "item_id": "table-a291db95e16706c8b08f276d",
+      "raw_text": null,
+      "table_id": "table-a291db95e16706c8b08f276d",
+      "image_path": null,
+      "section_id": null,
+      "source_bbox": null,
+      "header_status": "unverified",
+      "detection_status": "unverified_caption_or_cells",
+      "extraction_status": "partial"
+    }
+  ]
+}

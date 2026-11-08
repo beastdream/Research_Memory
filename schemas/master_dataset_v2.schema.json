@@ -1,0 +1,438 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "2.0"
+    },
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^arxiv:"
+    },
+    "source": {
+      "const": "arxiv"
+    },
+    "source_id": {
+      "type": "string"
+    },
+    "split": {
+      "const": "corpus"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "abstract": {
+      "type": "string"
+    },
+    "year": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1800,
+      "maximum": 2200
+    },
+    "identifiers": {
+      "type": "object",
+      "properties": {
+        "arxiv_id": {
+          "type": "string"
+        },
+        "arxiv_version": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^v[1-9][0-9]*$"
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "arxiv_id",
+        "arxiv_version",
+        "doi"
+      ]
+    },
+    "publication": {
+      "type": "object",
+      "properties": {
+        "arxiv_first_submitted_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "arxiv_updated_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "journal_publication_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "venue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "journal_publication_year": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1800,
+          "maximum": 2200
+        },
+        "publication_status": {
+          "enum": [
+            "preprint",
+            "published",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "arxiv_first_submitted_date",
+        "arxiv_updated_date",
+        "journal_publication_date",
+        "venue",
+        "journal_publication_year",
+        "publication_status"
+      ]
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "full_text": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "section_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "heading": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "page_start": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "page_end": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "extraction_status": {
+            "enum": [
+              "complete",
+              "partial",
+              "page_fallback",
+              "failed"
+            ]
+          },
+          "paragraphs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "section_id",
+          "heading",
+          "text",
+          "page_start",
+          "page_end",
+          "extraction_status"
+        ]
+      }
+    },
+    "qas": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "figures_and_tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "item_id": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "figure",
+              "table"
+            ]
+          },
+          "label": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "caption": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "data": {},
+          "text": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "image_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "page": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1
+          },
+          "extraction_status": {
+            "enum": [
+              "complete",
+              "partial",
+              "failed"
+            ]
+          }
+        },
+        "required": [
+          "item_id",
+          "type",
+          "label",
+          "caption",
+          "data",
+          "text",
+          "image_path",
+          "page",
+          "extraction_status"
+        ]
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "raw_reference": {
+            "type": "string"
+          },
+          "title": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "year": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 1800,
+            "maximum": 2200
+          },
+          "doi": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "arxiv_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "resolution_status": {
+            "enum": [
+              "resolved",
+              "unresolved",
+              "partial",
+              "failed"
+            ]
+          }
+        },
+        "required": [
+          "raw_reference",
+          "title",
+          "year",
+          "doi",
+          "arxiv_id",
+          "resolution_status"
+        ]
+      }
+    },
+    "has_full_text": {
+      "type": "boolean"
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "metadata_source": {
+          "type": "string"
+        },
+        "pdf_path": {
+          "type": "string"
+        },
+        "pdf_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "license": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "license_status": {
+          "enum": [
+            "known",
+            "unknown"
+          ]
+        },
+        "processed_at_utc": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "metadata_source",
+        "pdf_path",
+        "pdf_sha256",
+        "license",
+        "license_status",
+        "processed_at_utc"
+      ]
+    },
+    "extraction_quality": {
+      "type": "object",
+      "properties": {
+        "parser": {
+          "type": "string"
+        },
+        "structure_status": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "full_text",
+            "insufficient_text"
+          ]
+        },
+        "criteria": {
+          "type": "string"
+        },
+        "word_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "page_count": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "parser",
+        "structure_status",
+        "status",
+        "criteria",
+        "word_count",
+        "page_count"
+      ]
+    },
+    "citation_markers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "marker",
+          "page",
+          "offset",
+          "resolution_status"
+        ],
+        "properties": {
+          "marker": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "resolution_status": {
+            "const": "unresolved"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "canonical_id",
+    "source",
+    "source_id",
+    "split",
+    "title",
+    "abstract",
+    "year",
+    "identifiers",
+    "publication",
+    "authors",
+    "categories",
+    "full_text",
+    "qas",
+    "figures_and_tables",
+    "references",
+    "has_full_text",
+    "provenance",
+    "extraction_quality"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://researchmemory.local/schemas/arxiv-master-v2",
+  "title": "ResearchMemory arXiv Master Dataset v2"
+}

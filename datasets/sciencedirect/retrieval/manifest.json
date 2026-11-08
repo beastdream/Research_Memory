@@ -1,0 +1,32 @@
+{
+  "dataset_name": "ScienceDirect LLM Retrieval Corpus",
+  "created_at_utc": "2026-11-08T08:25:22Z",
+  "build_duration_sec": 31.36,
+  "chunker_version": "section-window-1.0-cl100k_base-nfc",
+  "tokenizer": "cl100k_base",
+  "target_window_tokens": 400,
+  "window_overlap_tokens": 60,
+  "total_papers": 306,
+  "total_chunks": 21538,
+  "chunks_per_topic": {
+    "Large Language Models": 4442,
+    "RAG and Information Retrieval": 5058,
+    "AI Agents and Long-Term Memory": 5517,
+    "Hallucination and Faithfulness": 2948,
+    "Scientific NLP and QA": 3573
+  },
+  "content_types": {
+    "abstract": 314,
+    "text": 17486,
+    "figure_caption": 1836,
+    "table": 1902
+  },
+  "token_distribution": {
+    "min": 1,
+    "p50": 271,
+    "p95": 400,
+    "max": 457
+  },
+  "oversized_atomic_objects": 4,
+  "corpus_digest": "61a9dd743957aca15f24537e062724b9e751fd95773bff98f79656131560e26c"
+}

@@ -1,0 +1,132 @@
+{
+  "reviewer": "Codex agent visual comparison; not independent human verification",
+  "distinct_papers": 11,
+  "sample_pages": 14,
+  "scope": "Rendered PDF pages visually compared with extracted headings, content and object records; not whole-corpus completeness approval",
+  "papers": [
+    {
+      "canonical_id": "arxiv:1410.3916",
+      "title": "Memory Networks",
+      "topic": "memory",
+      "pdf_page_count": 15,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "978ecaac3081beb72db3a4c40ca6264eb542008d2ab6dfb7766e1456e2312e99",
+      "observations": "Single-column ICLR template, small-cap section headings, page-1 abstract/introduction and start of section 2 compared. Footnote and arXiv margin noise remain."
+    },
+    {
+      "canonical_id": "arxiv:2005.11401",
+      "title": "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks",
+      "topic": "retrieval",
+      "pdf_page_count": 19,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+      "observations": "Single-column title and author grid, page-1 abstract and introduction compared. Extracted heading 12 Abstract is a false number from author/front-matter layout; section semantics remain partial."
+    },
+    {
+      "canonical_id": "arxiv:2305.10250",
+      "title": "MemoryBank: Enhancing Large Language Models with Long-Term Memory",
+      "topic": "memory",
+      "pdf_page_count": 11,
+      "reviewed_pages": [
+        1,
+        3,
+        7,
+        9
+      ],
+      "pdf_sha256": "6c60f7f95a872de85179b770edaba584da7a30da37490522394a3e4888aa0059",
+      "observations": "Pages 1,3,7,9 compared visually. Figure 1 multi-line caption recovered; Figures 3 and 4 truly present on page 7 and now recorded. Table 2 has grouped English/Chinese rows, numerical cells and six semantic headers; fallback grids retain numbers but split/merge text cells and do not establish header semantics."
+    },
+    {
+      "canonical_id": "arxiv:2404.16130",
+      "title": "From Local to Global: A Graph RAG Approach to Query-Focused Summarization",
+      "topic": "retrieval",
+      "pdf_page_count": 26,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "730f1a9f38d16689900969a3eeeb1b31e45eda1dcc1f37a043afa90aff76c867",
+      "observations": "Single-column preprint, author affiliation grid and abstract/introduction compared; publication/update date is not a journal publication date."
+    },
+    {
+      "canonical_id": "arxiv:2609.38473",
+      "title": "Re-ranking and Late Interaction Drive Retrieval Quality: A Controlled Comparison of RAG Strategies for Scientific Question Answering",
+      "topic": "evaluation",
+      "pdf_page_count": 9,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "78307b348c36059b1de58971110b789c94387e407da74bb3282a03336c7947a3",
+      "observations": "IEEE two-column page, inline bold abstract/keywords and introduction in left column, continuing prose in right column compared. Column ordering is heuristic."
+    },
+    {
+      "canonical_id": "arxiv:1911.07673",
+      "title": "Using Mapping Languages for Building Legal Knowledge Graphs from XML Files",
+      "topic": "graph",
+      "pdf_page_count": 12,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "9582f0c5e065068567541d22ae16f7f260db36d1669b122e926ae424784ea261",
+      "observations": "Narrow single-column legal knowledge graph paper, inline abstract and keywords. Introduction remains within front-matter/unclassified text; later sections recognized. Scientific content is retained but headings are incomplete."
+    },
+    {
+      "canonical_id": "arxiv:2402.01622",
+      "title": "TravelPlanner: A Benchmark for Real-World Planning with Language Agents",
+      "topic": "agents",
+      "pdf_page_count": 24,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "a91b967cf5227a65b7e2fb0f63c7c006aeed800a31fd5020e594acd5ba935e9a",
+      "observations": "Two-column agents benchmark with title spanning columns. Left-column abstract and introduction precede continuation in right column. Citation-rich prose preserved; reading order remains heuristic."
+    },
+    {
+      "canonical_id": "arxiv:2601.03258",
+      "title": "Enhancing Retrieval-Augmented Generation with Two-Stage Retrieval: FlashRank Reranking and Query Expansion",
+      "topic": "retrieval",
+      "pdf_page_count": 3,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "f58042af1a067e1e2141616d7f5a981372cc0f65c8ef300418224c91d6cc118d",
+      "observations": "Three-page IEEE paper with Roman numeral and lettered subsection headings. PDF visibly has I. Introduction and II. Related Work, but font-evidence gate does not recognize them. Excluded for unverified section structure; no OCR/glyph guessing."
+    },
+    {
+      "canonical_id": "arxiv:2403.16843",
+      "title": "Do LLM Agents Have Regret? A Case Study in Online Learning and Games",
+      "topic": "agents",
+      "pdf_page_count": 92,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "c9db22a98f5c6bfa71d04ae9fd6820c9629f40955c6df32672ce2efdf5918cf2",
+      "observations": "92-page game/online-learning paper; page-1 title, author list, abstract and introduction compared. Earlier false A Case Study heading removed and abstract/body retained after parser repair. Whole-document scientific completeness not reviewed."
+    },
+    {
+      "canonical_id": "arxiv:2605.04495",
+      "title": "CAR: Query-Guided Confidence-Aware Reranking for Retrieval-Augmented Generation",
+      "topic": "retrieval",
+      "pdf_page_count": 24,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "161c2ef1c95385ef9f07ea443bded3d8a3891ec8927472fa027821d59c03de4b",
+      "observations": "Elsevier layout with affiliation block and side-by-side article-info/abstract regions, wide introduction and footnotes. Inline region/footnote ordering remains partial."
+    },
+    {
+      "canonical_id": "arxiv:2105.07624",
+      "title": "TAT-QA: A Question Answering Benchmark on a Hybrid of Tabular and Textual Content in Finance",
+      "topic": "evaluation",
+      "pdf_page_count": 11,
+      "reviewed_pages": [
+        1
+      ],
+      "pdf_sha256": "a82f188433ef40660aef6ad0c4b8dff1f4fc3060990eec87487e9b422981e248",
+      "observations": "Two-column TAT-QA benchmark paper, page-1 left abstract/introduction and right-column finance/table example narrative compared. Paper descriptions of QA benchmarks are source content, not QA annotations for this corpus."
+    }
+  ]
+}

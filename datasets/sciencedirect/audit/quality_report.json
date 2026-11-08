@@ -1,0 +1,60 @@
+{
+  "audit_timestamp": "2026-10-28T08:40:06.596158+00:00",
+  "parser_version": "sciencedirect-v1.0",
+  "target": 150,
+  "total_master_records": 150,
+  "total_records_with_doi": 150,
+  "verified_doi_count": 150,
+  "invalid_doi_count": 0,
+  "mismatch_doi_count": 0,
+  "duplicate_doi_count": 0,
+  "rejected_doi_count": 0,
+  "eligible_sciencedirect_papers": 150,
+  "authorized_full_text_count": 0,
+  "full_text_complete_count": 0,
+  "full_text_partial_count": 0,
+  "metadata_only_count": 0,
+  "access_denied_count": 150,
+  "papers_with_references": 0,
+  "papers_with_tables": 0,
+  "papers_with_figures": 0,
+  "papers_with_human_qas": 0,
+  "cross_source_arxiv_doi_duplicates": 0,
+  "distribution_by_year": {
+    "2026": 48,
+    "2025": 35,
+    "2024": 19,
+    "2023": 9,
+    "2022": 8,
+    "2021": 7,
+    "2020": 11,
+    "2019": 5,
+    "2018": 8
+  },
+  "distribution_by_topic": {
+    "Large Language Models": 30,
+    "RAG and Information Retrieval": 35,
+    "AI Agents and Long-Term Memory": 35,
+    "Hallucination and Faithfulness": 25,
+    "Scientific NLP and QA": 25
+  },
+  "top_journals": {
+    "Procedia Computer Science": 12,
+    "Neurocomputing": 11,
+    "Knowledge-Based Systems": 11,
+    "Natural Language Processing Journal": 10,
+    "Robotics and Autonomous Systems": 5,
+    "Procedia CIRP": 4,
+    "Expert Systems with Applications": 4,
+    "Artificial Intelligence": 4,
+    "Biological Psychiatry": 4,
+    "Computer Speech &amp; Language": 3
+  },
+  "license_restrictions": {
+    "tdm_permission": "Conditional academic research / TDM per Elsevier policy",
+    "ai_training_permission": "Restricted by publisher license; no commercial training",
+    "redistribution_permission": "Public redistribution of full copyrighted text disallowed",
+    "retention_policy": "Academic research metadata and permissible extracts only"
+  },
+  "quality_assertions_passed": true
+}

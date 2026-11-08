@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "papers": 147,
+  "chunks": 8919,
+  "deterministic_rebuild": true,
+  "source_links_equal_rebuild": true,
+  "all_token_counts_verified": true,
+  "sqlite_integrity": "ok",
+  "alignment_records": 0,
+  "corpus_digest": "52d6d3c8543f144dd8e92f759ba2e3c0f636c57d2b6945049a794c35a85b9cc6",
+  "leakage_policy": "Only source content; exact human-verified train labels may be exported. No selected QA exists.",
+  "scientific_completeness_verified": false
+}

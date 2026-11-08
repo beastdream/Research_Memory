@@ -1,0 +1,9 @@
+{
+  "local_exceptions": [],
+  "memorybank_options": 1,
+  "tabs": 8,
+  "postgres_exceptions": [],
+  "postgres_memorybank_options": 1,
+  "qasper_parquet_exceptions": [],
+  "status": "passed"
+}

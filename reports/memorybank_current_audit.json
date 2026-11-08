@@ -1,0 +1,106 @@
+{
+  "canonical_id": "arxiv:2305.10250",
+  "arxiv_id": "2305.10250",
+  "title": "MemoryBank: Enhancing Large Language Models with Long-Term Memory",
+  "year": 2023,
+  "has_pdf": true,
+  "has_full_text": true,
+  "full_text_status": "partial",
+  "section_count": 13,
+  "paragraph_count": 157,
+  "figure_count": 4,
+  "table_count": 2,
+  "reference_count": 22,
+  "qa_count": 0,
+  "verified_qa_count": 0,
+  "page_mapping_status": "verified_ranges",
+  "provenance_status": "pdf_checksum_verified",
+  "schema_valid": true,
+  "MASTER_METADATA_READY": true,
+  "MASTER_CONTENT_READY": true,
+  "RETRIEVAL_READY": true,
+  "QA_TRAINING_READY": false,
+  "retrieval_ready": true,
+  "qa_training_ready": false,
+  "full_text_usable": true,
+  "structurally_complete": false,
+  "page_count": 11,
+  "page_checks": [
+    {
+      "page": 1,
+      "source_word_count": 430,
+      "word_coverage": 0.9884,
+      "mapped": true
+    },
+    {
+      "page": 2,
+      "source_word_count": 718,
+      "word_coverage": 1.0,
+      "mapped": true
+    },
+    {
+      "page": 3,
+      "source_word_count": 549,
+      "word_coverage": 0.969,
+      "mapped": true
+    },
+    {
+      "page": 4,
+      "source_word_count": 672,
+      "word_coverage": 0.9643,
+      "mapped": true
+    },
+    {
+      "page": 5,
+      "source_word_count": 743,
+      "word_coverage": 1.0,
+      "mapped": true
+    },
+    {
+      "page": 6,
+      "source_word_count": 922,
+      "word_coverage": 0.9935,
+      "mapped": true
+    },
+    {
+      "page": 7,
+      "source_word_count": 789,
+      "word_coverage": 0.9949,
+      "mapped": true
+    },
+    {
+      "page": 8,
+      "source_word_count": 738,
+      "word_coverage": 1.0,
+      "mapped": true
+    },
+    {
+      "page": 9,
+      "source_word_count": 653,
+      "word_coverage": 0.9923,
+      "mapped": true
+    },
+    {
+      "page": 10,
+      "source_word_count": 491,
+      "word_coverage": 0.998,
+      "mapped": true
+    },
+    {
+      "page": 11,
+      "source_word_count": 228,
+      "word_coverage": 1.0,
+      "mapped": true
+    }
+  ],
+  "pdf_caption_candidates": 6,
+  "missing_caption_candidates": [],
+  "object_absence_status": "not_established_by_text_parser",
+  "duplicate_long_paragraph_count": 0,
+  "unmapped_glyph_count": 0,
+  "issues": [
+    "object_structure_partial",
+    "bibliography_partial_fragments"
+  ],
+  "retrieval_blockers": []
+}

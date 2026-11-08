@@ -1,0 +1,68 @@
+{
+  "parser_revision": "pymupdf-layout-enrichment-1.2",
+  "pilot_digest": "22b7ec77ce56a8d21ae263ad07d5a9893300319454eb49e8b8a94f5e3ff4345d",
+  "reviewer": "Codex visual inspection",
+  "accepted_for_partial_enrichment": true,
+  "accepted_for_complete_extraction": false,
+  "criteria": [
+    "All 5 PDFs open and checksums match imported snapshots",
+    "Schema and evidence IDs validate",
+    "Inspected pages 1-2 of each PDF against extracted headings/text",
+    "Raw records/PDFs retained; figures/tables/references stay partial",
+    "No API calls, synthetic annotations or fabricated scientific values"
+  ],
+  "limitations": [
+    "Sample review covers 10 rendered pages, not all pages of all 150 PDFs",
+    "Heuristic headings and typography still need per-paper human review",
+    "Captions may be truncated and tables lack verified column semantics",
+    "Reference fragments are partial; only explicit exact unambiguous identifiers resolve"
+  ],
+  "papers": [
+    {
+      "canonical_id": "arxiv:1410.3916",
+      "pdf_sha256": "978ecaac3081beb72db3a4c40ca6264eb542008d2ab6dfb7766e1456e2312e99",
+      "inspected_pages": [
+        1,
+        2
+      ],
+      "observations": "ICLR single-column/small-caps layout. PDF pages 1-2 inspected: Introduction, Memory Networks and section 3 agree with source; equations remain plain extracted text. Headers/footers can remain in text."
+    },
+    {
+      "canonical_id": "arxiv:2005.11401",
+      "pdf_sha256": "23e3249e9a1e75418d82efecab0ea8c4d033b89c93742f63208d47ce01f21233",
+      "inspected_pages": [
+        1,
+        2
+      ],
+      "observations": "NeurIPS single-column, numbered and nested headings. PDF pages 1-2 inspected: Introduction and Methods agree. Figure 1 caption is truncated in legacy extraction and remains partial; chart content is not interpreted."
+    },
+    {
+      "canonical_id": "arxiv:2305.10250",
+      "pdf_sha256": "6c60f7f95a872de85179b770edaba584da7a30da37490522394a3e4888aa0059",
+      "inspected_pages": [
+        1,
+        2
+      ],
+      "observations": "NeurIPS long title, authors with numeric affiliations, diagrams. PDF pages 1-2 inspected: affiliations are front matter, Introduction body agrees. Figure captions and table cells retain partial status."
+    },
+    {
+      "canonical_id": "arxiv:2404.16130",
+      "pdf_sha256": "730f1a9f38d16689900969a3eeeb1b31e45eda1dcc1f37a043afa90aff76c867",
+      "inspected_pages": [
+        1,
+        2
+      ],
+      "observations": "Microsoft preprint single-column with nested headings. PDF pages 1-2 inspected: Introduction, Background and RAG Approaches section labels match. Parent headings can have empty paragraphs; no claim of full hierarchy correctness."
+    },
+    {
+      "canonical_id": "arxiv:2609.38473",
+      "pdf_sha256": "78307b348c36059b1de58971110b789c94387e407da74bb3282a03336c7947a3",
+      "inspected_pages": [
+        1,
+        2
+      ],
+      "observations": "IEEE two-column, bold abstract and many nested headings. PDF pages 1-2 inspected: detected two-column pages now read left column before right, section 2.1/2.2 paragraphs agree. Inline abstract and keywords are not separately recognized and stay in front matter."
+    }
+  ],
+  "followup_review": "Final pilot headings and paragraphs rechecked against the same rendered pages after joining split heading numbers, retaining parent headings, and adding numeric citation contexts. No pilot paper has a NUL glyph. Partial-only acceptance remains in force."
+}

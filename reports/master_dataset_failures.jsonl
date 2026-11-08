@@ -1,0 +1,150 @@
+{"canonical_id": "arxiv:1410.3916", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1503.00759", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1503.02917", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1503.08895", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1503.09137", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:2", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1504.07678", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1506.01094", "retrieval_ready": true, "issues": ["pdf_caption_candidates_missing_from_objects:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1508.00715", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1508.01755", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1508.02593", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1510.04935", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1510.05911", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1511.00060", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1601.03778", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:6", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1604.04795", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1605.06065", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "unmapped_scientific_glyphs:10", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1606.02355", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1607.00992", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1707.01961", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1802.00510", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1805.09354", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1806.03822", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1808.09602", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1810.04805", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1904.08375", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1904.08936", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1905.08957", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1906.00067", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1910.09760", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1910.10683", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:1911.07673", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2002.08909", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:3", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2003.00719", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:4", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2004.04906", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:3", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2004.14974", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2005.11401", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:2", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2007.00808", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2007.01282", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2010.08191", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2011.01103", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2101.00294", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2101.02235", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2104.05832", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2104.07567", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2104.12622", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2105.00811", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2105.03011", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2105.07624", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2105.14517", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2106.12875", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2108.06027", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:2", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2108.08105", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2108.13934", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2112.02342", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:2", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2201.00464", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2205.00970", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2205.01331", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2208.00511", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2208.07670", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:2", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2210.03629", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:5", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2211.04142", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2303.11366", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:2", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2303.17580", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2304.03442", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:10", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2304.13343", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2305.10250", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2305.13197", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2306.00947", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2306.07174", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2308.11432", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2309.02427", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2309.07870", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2310.06626", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:2", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2312.16821", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:3", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2401.18059", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2402.01622", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2402.02764", "retrieval_ready": false, "issues": ["duplicate_long_paragraphs:4", "unmapped_scientific_glyphs:176", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments", "excessive_unmapped_glyphs"], "retrieval_blockers": ["excessive_unmapped_glyphs"]}
+{"canonical_id": "arxiv:2402.06664", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2402.11035", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2402.14034", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2402.14672", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2402.17753", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2403.01469", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2403.08715", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2403.16843", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:24", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2404.16130", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:4", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2405.01535", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:2", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2405.13008", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2405.13009", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2406.12639", "retrieval_ready": true, "issues": ["pdf_caption_candidates_missing_from_objects:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2406.14562", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2407.01231", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:15", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2407.01489", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2408.06458", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2411.04075", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "pdf_caption_candidates_missing_from_objects:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2411.08432", "retrieval_ready": true, "issues": ["pdf_caption_candidates_missing_from_objects:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2412.21154", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2502.00306", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:5", "unmapped_scientific_glyphs:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2502.21024", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:4", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2503.11733", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2504.00727", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2504.08756", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:4", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2504.09723", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:8", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2504.15689", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2505.14279", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2505.19288", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:7", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2506.19967", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:8", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2508.09124", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2508.13743", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2508.16439", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:8", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2508.16629", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2508.18929", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2509.14477", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2509.25459", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2510.02209", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2510.02827", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2510.08255", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:9", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2510.15682", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:3", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2510.22344", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2512.13706", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2601.01885", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:3", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2601.03258", "retrieval_ready": false, "issues": ["object_structure_partial", "bibliography_not_detected_absence_unverified", "section_headings_unverified"], "retrieval_blockers": ["section_headings_unverified"]}
+{"canonical_id": "arxiv:2601.05264", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:13", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2601.06973", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:7", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2601.11969", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:5", "pdf_caption_candidates_missing_from_objects:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2602.00279", "retrieval_ready": false, "issues": ["low_page_word_coverage:26", "duplicate_long_paragraphs:3", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": ["low_page_word_coverage:26"]}
+{"canonical_id": "arxiv:2602.02774", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2602.07739", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:3", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2602.23320", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2603.14828", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2603.16877", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2603.24925", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:2", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2604.19899", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:4", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2604.20006", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2605.01664", "retrieval_ready": true, "issues": ["bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2605.04495", "retrieval_ready": true, "issues": ["duplicate_long_paragraphs:1", "object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2605.17007", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2605.29653", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2605.30283", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2606.01070", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:1", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2606.10694", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:2", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2606.25161", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2607.05690", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2608.00009", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2608.07429", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_not_detected_absence_unverified"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2608.11248", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2609.38473", "retrieval_ready": true, "issues": ["object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2610.00010", "retrieval_ready": true, "issues": ["unmapped_scientific_glyphs:5", "object_structure_partial", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2610.15837", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}
+{"canonical_id": "arxiv:2610.31303", "retrieval_ready": true, "issues": ["object_structure_partial", "table_caption_without_cells", "bibliography_partial_fragments"], "retrieval_blockers": []}

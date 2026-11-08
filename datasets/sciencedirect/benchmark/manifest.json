@@ -1,0 +1,27 @@
+{
+  "benchmark_name": "ScienceDirect Multi-Topic IR Evaluation Benchmark",
+  "total_queries": 125,
+  "queries_per_topic": {
+    "AI Agents and Long-Term Memory": 25,
+    "RAG and Information Retrieval": 25,
+    "Large Language Models": 25,
+    "Hallucination and Faithfulness": 25,
+    "Scientific NLP and QA": 25
+  },
+  "queries_by_type": {
+    "methodology": 104,
+    "literature_survey": 1,
+    "architectural_design": 18,
+    "comparative_analysis": 1,
+    "empirical_evaluation": 1
+  },
+  "total_qrels": 711,
+  "qrels_by_score": {
+    "score_2": 463,
+    "score_1": 248
+  },
+  "avg_qrels_per_query": 5.69,
+  "unique_target_papers": 125,
+  "unique_target_chunks": 691,
+  "corpus_reference": "D:\\ResearchMemory\\datasets\\sciencedirect\\retrieval\\corpus.sqlite"
+}

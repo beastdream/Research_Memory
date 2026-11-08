@@ -1,0 +1,60 @@
+{
+  "report_timestamp": "2026-10-28T12:25:01.788826+00:00",
+  "target": 150,
+  "counters": {
+    "total_candidates_found": 213,
+    "doi_verified_count": 306,
+    "duplicates_skipped": 47,
+    "rejected_invalid_doi": 0,
+    "ambiguous_review_count": 10,
+    "valid_pdfs_downloaded": 157,
+    "total_pdf_pages": 1308,
+    "total_pdf_bytes": 474902894,
+    "master_dataset_records": 306,
+    "enriched_v2_records": 306
+  },
+  "topic_distribution": {
+    "Large Language Models": 62,
+    "RAG and Information Retrieval": 72,
+    "AI Agents and Long-Term Memory": 72,
+    "Hallucination and Faithfulness": 50,
+    "Scientific NLP and QA": 50
+  },
+  "year_distribution": {
+    "2026": 195,
+    "2025": 42,
+    "2024": 20,
+    "2023": 10,
+    "2022": 8,
+    "2021": 7,
+    "2020": 11,
+    "2019": 5,
+    "2018": 8
+  },
+  "top_journals": {
+    "Knowledge-Based Systems": 19,
+    "Neurocomputing": 18,
+    "Procedia Computer Science": 14,
+    "Expert Systems with Applications": 13,
+    "Natural Language Processing Journal": 12,
+    "Information Processing & Management": 7,
+    "Pattern Recognition": 6,
+    "Information Sciences": 5,
+    "Advanced Engineering Informatics": 5,
+    "Robotics and Autonomous Systems": 5
+  },
+  "entitlements": {
+    "search_api": "authorized",
+    "article_retrieval_pdf": "authorized",
+    "article_retrieval_xml": "authorized",
+    "license_mode": "Elsevier Academic / Open Access / TDM",
+    "commercial_training": "restricted_by_license"
+  },
+  "shortfall_analysis": {
+    "target": 150,
+    "achieved_master": 306,
+    "achieved_valid_pdf": 157,
+    "deficit": 0,
+    "status": "met"
+  }
+}

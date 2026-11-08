@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://researchmemory.local/schemas/sciencedirect_master.schema.json",
+  "title": "ScienceDirect LLM Master Dataset Schema",
+  "type": "object",
+  "required": [
+    "canonical_id",
+    "source",
+    "doi",
+    "doi_url",
+    "title",
+    "abstract",
+    "year",
+    "authors",
+    "keywords",
+    "topic_group",
+    "publication",
+    "full_text",
+    "qas",
+    "figures_and_tables",
+    "references",
+    "doi_validation",
+    "rights",
+    "provenance",
+    "quality"
+  ],
+  "properties": {
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^doi:10\\.\\d{4,9}/\\S+$"
+    },
+    "source": {
+      "type": "string",
+      "const": "sciencedirect"
+    },
+    "doi": {
+      "type": "string",
+      "pattern": "^10\\.\\d{4,9}/\\S+$"
+    },
+    "doi_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "pii": {
+      "type": ["string", "null"]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "abstract": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1950,
+      "maximum": 2026
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "topic_group": {
+      "type": "string",
+      "enum": [
+        "Large Language Models",
+        "RAG and Information Retrieval",
+        "AI Agents and Long-Term Memory",
+        "Hallucination and Faithfulness",
+        "Scientific NLP and QA"
+      ]
+    },
+    "publication": {
+      "type": "object",
+      "required": ["journal", "publisher"],
+      "properties": {
+        "journal": { "type": "string" },
+        "publisher": { "type": "string" },
+        "publication_date": { "type": ["string", "null"] },
+        "volume": { "type": ["string", "null"] },
+        "issue": { "type": ["string", "null"] },
+        "pages": { "type": ["string", "null"] },
+        "article_number": { "type": ["string", "null"] },
+        "issn": { "type": ["string", "null"] }
+      }
+    },
+    "full_text": {
+      "type": "object",
+      "required": ["sections", "extraction_status"],
+      "properties": {
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["section_id", "heading", "paragraphs", "extraction_status"],
+            "properties": {
+              "section_id": { "type": "string" },
+              "heading": { "type": "string" },
+              "paragraphs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["paragraph_id", "text", "section_id"],
+                  "properties": {
+                    "paragraph_id": { "type": "string" },
+                    "text": { "type": "string" },
+                    "section_id": { "type": "string" },
+                    "source_span": { "type": ["string", "null"] }
+                  }
+                }
+              },
+              "original_xml_reference": { "type": ["string", "null"] },
+              "extraction_status": {
+                "type": "string",
+                "enum": ["pending", "complete", "partial", "unavailable", "access_denied"]
+              }
+            }
+          }
+        },
+        "extraction_status": {
+          "type": "string",
+          "enum": ["pending", "complete", "partial", "unavailable", "access_denied", "metadata_only"]
+        }
+      }
+    },
+    "qas": {
+      "type": "array"
+    },
+    "figures_and_tables": {
+      "type": "array"
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ref_idx", "raw_reference"],
+        "properties": {
+          "ref_idx": { "type": "integer" },
+          "raw_reference": { "type": "string" },
+          "doi": { "type": ["string", "null"] },
+          "title": { "type": ["string", "null"] },
+          "authors": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "year": { "type": ["integer", "null"] },
+          "resolution_status": { "type": "string" }
+        }
+      }
+    },
+    "doi_validation": {
+      "type": "object",
+      "required": ["status", "registry", "title_match", "validated_at"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "const": "verified"
+        },
+        "registry": { "type": "string" },
+        "title_match": { "type": "boolean" },
+        "authors_match": { "type": ["boolean", "null"] },
+        "publication_match": { "type": ["boolean", "null"] },
+        "validated_at": { "type": "string" }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "properties": {
+        "open_access": { "type": ["boolean", "null"] },
+        "license": { "type": ["string", "null"] },
+        "full_text_entitlement": { "type": ["string", "null"] },
+        "tdm_permission": { "type": ["string", "null"] },
+        "ai_training_permission": { "type": ["string", "null"] },
+        "redistribution_permission": { "type": ["string", "null"] },
+        "retention_policy": { "type": ["string", "null"] }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_url", "api_endpoint", "retrieved_at"],
+      "properties": {
+        "source_url": { "type": "string" },
+        "api_endpoint": { "type": "string" },
+        "retrieved_at": { "type": "string" },
+        "parser_version": { "type": ["string", "null"] },
+        "content_sha256": { "type": ["string", "null"] }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["metadata_status", "full_text_status", "references_status", "figures_status", "qa_status"],
+      "properties": {
+        "metadata_status": {
+          "type": "string",
+          "enum": ["complete", "partial"]
+        },
+        "full_text_status": {
+          "type": "string",
+          "enum": ["complete", "partial", "metadata_only", "access_denied", "unavailable"]
+        },
+        "references_status": {
+          "type": "string",
+          "enum": ["extracted", "partial", "none", "not_applicable"]
+        },
+        "figures_status": {
+          "type": "string",
+          "enum": ["extracted", "partial", "none", "not_applicable"]
+        },
+        "qa_status": {
+          "type": "string",
+          "enum": ["not_annotated", "human_annotated"]
+        }
+      }
+    }
+  }
+}

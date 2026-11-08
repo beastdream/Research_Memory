@@ -1,0 +1,545 @@
+[
+  {
+    "path": "datasets\\manifests\\arxiv_audit.json",
+    "bytes": 5195,
+    "sha256": "f69ce91edef0d3470dc1f5f725b41bd928f38638531a33398b053898d7e0086f",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\manifests\\arxiv_candidate_review.json",
+    "bytes": 924,
+    "sha256": "25144c28791a30a3c27626cf62d35ad7e66e5c68932c785949ff7e711ea24d5d",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\manifests\\arxiv_download_dry_run.json",
+    "bytes": 2989,
+    "sha256": "cdbace9d08f708b1ed77b57985b7b3af5cad65459bf5e1a7d7a9362b06ed4cb7",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\manifests\\arxiv_enrichment_pilot.jsonl",
+    "bytes": 1263,
+    "sha256": "4a552594b02d221751d654da9df38d501920cc487c47ef81027d1a1485f68604",
+    "records": 5,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\manifests\\arxiv_enrichment_selected.jsonl",
+    "bytes": 37948,
+    "sha256": "f80ec2b2b1cc41169d72ab8189bc14b83afa9b0e22ec30762237fad7ca250964",
+    "records": 150,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\manifests\\arxiv_normalize_failures.json",
+    "bytes": 4,
+    "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\manifests\\downloads.jsonl",
+    "bytes": 3420,
+    "sha256": "7fb0c1003c46be6a24bcfdaff77f35334cd2b4e7d61a1b6b9553ff629bb80a89",
+    "records": 11,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\arxiv_enrichment_audit.json",
+    "bytes": 29496,
+    "sha256": "bc88ad7b71e395a29a8ebc9777387bcab9ca1461ea4b4425c3c26ace94d43a48",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\arxiv_enrichment_failures.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\arxiv_master_v2.jsonl",
+    "bytes": 40896253,
+    "sha256": "74e6cd2d141b6a084279398697ca6e2ae72f9556706ac65dd779a653a2a0d33e",
+    "records": 150,
+    "master_records": 150,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\arxiv_enrichment_audit.json",
+    "bytes": 3128,
+    "sha256": "8478fdb9cc444e76c0a9bbb7eef2c917e5e24ee87ed280ec8503e2f90ca75c27",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\arxiv_enrichment_failures.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\arxiv_master_v2.jsonl",
+    "bytes": 1137380,
+    "sha256": "a7ffb42cef34f984401b90fcd0d979f5da2333347a1634bda0310dec19b2780a",
+    "records": 5,
+    "master_records": 5,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\qa_candidates.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\qa_human_annotated.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\qa_verified.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\pilot\\quality_review.json",
+    "bytes": 1706,
+    "sha256": "3e8ed1cfcbfa428c1ad8db260cdf7ab531c18a6ebc4f62638197b0a758b48d45",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\qa_candidates.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\qa_human_annotated.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\master\\qa_verified.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\processed\\arxiv_master.jsonl",
+    "bytes": 70126791,
+    "sha256": "c5475da3faae322602cc46055d1c921134477e222d7a60460e4a9fb72e9c0141",
+    "records": 150,
+    "master_records": 150,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\processed\\openalex_metadata.jsonl",
+    "bytes": 36788,
+    "sha256": "d1ebe45125c1a469f5a989c8e3aa452a3049a6796feceb4bd42a5c54d01bc00c",
+    "records": 20,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\processed\\qasper_train.jsonl",
+    "bytes": 23509160,
+    "sha256": "7863f42d79f4442738341a227a34b35abbc45b09459e3ed3a9e5b89988251e3e",
+    "records": 888,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\processed\\scifact_corpus.jsonl",
+    "bytes": 3196598,
+    "sha256": "3ebc74b545faf9cda86527437f09e7a20619655639464201203be625308ae2d4",
+    "records": 1000,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\processed\\unarxive_sample.jsonl",
+    "bytes": 19577,
+    "sha256": "7839ec72f9a86b30365bb291af2a7d31c260387af40dc19663bd7f44ea0c9edf",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\processed\\uploaded_pdfs.jsonl",
+    "bytes": 118976,
+    "sha256": "537c95e68bd7c9403af41f647ebc2f9a578c2ffb18df2afbdf91058d98cb1234",
+    "records": 2,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\arxiv\\metadata.json",
+    "bytes": 692432,
+    "sha256": "4791c36579f3976ceb51ed5f08020875a826615c10e9c645d085f8088ac5d3bf",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\arxiv\\metadata_initial_review.json",
+    "bytes": 659817,
+    "sha256": "04f28a2c3e2321d25684bcc6a8ce2f3c03d718f41fa88b2611279384437e255c",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\longmemeval\\longmemeval_oracle.json",
+    "bytes": 15388478,
+    "sha256": "821a2034d219ab45846873dd14c14f12cfe7776e73527a483f9dac095d38620c",
+    "records": 500,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\qasper\\qasper\\train\\0000.parquet",
+    "bytes": 14374550,
+    "sha256": "9af08092ee26c4f700202c1f90d1592b662926f23f3a308a10ff0a53345e37fe",
+    "records": 888,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "columns": [
+      "id",
+      "title",
+      "abstract",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "unanswerable",
+      "item",
+      "yes_no",
+      "free_form_answer",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item"
+    ],
+    "status": "metadata_read"
+  },
+  {
+    "path": "datasets\\raw\\qasper\\qasper\\validation\\0000.parquet",
+    "bytes": 4749127,
+    "sha256": "089781b91c337d348dd9e8b57cc8adc100ed2d9cab84a6127402bcccf1559222",
+    "records": 281,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "columns": [
+      "id",
+      "title",
+      "abstract",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "unanswerable",
+      "item",
+      "yes_no",
+      "free_form_answer",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item",
+      "item"
+    ],
+    "status": "metadata_read"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\claims_dev.jsonl",
+    "bytes": 65007,
+    "sha256": "86f0435d08fdb65d1aa41d1472684f57e6e71930626497bdf4d7a9ec1a632217",
+    "records": 300,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\claims_test.jsonl",
+    "bytes": 33769,
+    "sha256": "558930d75215c73f84a28fe538307d6d397c9de1ec7239514cf45f80d75d2ca3",
+    "records": 300,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\claims_train.jsonl",
+    "bytes": 175616,
+    "sha256": "f4c8fa82d8bd0653a9cc8d61a6ea48c25eacea64e90af5dbf390ebb1b74372f0",
+    "records": 809,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\corpus.jsonl",
+    "bytes": 8307875,
+    "sha256": "b8d6c89624cb2ed74dee8938effc4f5d8bd2086887880af8110d64be4ceade62",
+    "records": 5183,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_1\\claims_dev_1.jsonl",
+    "bytes": 47736,
+    "sha256": "e30aaab11fbc94580514c83fe3778b76cac0b1b981f3fe941d7b4a33005e5653",
+    "records": 222,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_1\\claims_train_1.jsonl",
+    "bytes": 192887,
+    "sha256": "32922d3690b6e867589ed9c672c00115eea7295845c91d13747ef07fa6fb3996",
+    "records": 887,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_2\\claims_dev_2.jsonl",
+    "bytes": 48999,
+    "sha256": "1db8e51cfa04f680ce6d256096ffe336ee74f1640f836e4d2bc0c711fb312f03",
+    "records": 222,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_2\\claims_train_2.jsonl",
+    "bytes": 191624,
+    "sha256": "6d8ad6881a7d50cd05aad1baf62d68d68ae3168fe5e3049549bc430ffd7f09a3",
+    "records": 887,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_3\\claims_dev_3.jsonl",
+    "bytes": 48594,
+    "sha256": "25f3b19510216350db45cfd469a7d8c6131f948c7ce70976f01d6126682ee745",
+    "records": 222,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_3\\claims_train_3.jsonl",
+    "bytes": 192029,
+    "sha256": "8b16b208d9b42cbf882d480531090b23025689077f78aee60b6434a73c8b3d8b",
+    "records": 887,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_4\\claims_dev_4.jsonl",
+    "bytes": 47912,
+    "sha256": "f6c91c02854739b476b145160c47beb9a123607da58b33b7ea240e0d51209142",
+    "records": 222,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_4\\claims_train_4.jsonl",
+    "bytes": 192711,
+    "sha256": "11444b9365c72eb6b497dc1a068ad11fa691e5c94cab2249b8969430704f0608",
+    "records": 887,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_5\\claims_dev_5.jsonl",
+    "bytes": 47382,
+    "sha256": "a210668e95a02d8b2b67f2592db517476e22d6175309e5d643f2bf01eed5c97b",
+    "records": 221,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\scifact\\data\\cross_validation\\fold_5\\claims_train_5.jsonl",
+    "bytes": 193241,
+    "sha256": "859ac5af4b2703d8feab737315b0d12c59d7cbc4c4265852a2c3f9dc93ef1177",
+    "records": 888,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\raw\\unarxive\\sample\\preview.jsonl",
+    "bytes": 53619,
+    "sha256": "14bfd71500c7f52f698b3d193b8b3fdb22d953a5b709f4ab142f5b9376849df4",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\retrieval_corpus\\chunks.jsonl",
+    "bytes": 24248288,
+    "sha256": "cbbacc3e0fba01f1bd67dcb0ddda69e5082374b073e150c380db592683983997",
+    "records": 8919,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\retrieval_corpus\\llm_train.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\retrieval_corpus\\manifest.json",
+    "bytes": 996,
+    "sha256": "4adefe55fab55fc23753043e67e1d440a20ee7483df1a6b8ea2036f0b192abc5",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\retrieval_corpus\\qa_evidence_alignment.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "datasets\\retrieval_corpus\\retriever_train.jsonl",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "records": 0,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "docs\\examples\\memgpt_local_pdf_master_v2.json",
+    "bytes": 355759,
+    "sha256": "323f2f6391b9760233b3337f4b973dd3fef3710a749f91da85aa33f5492d1fe6",
+    "records": 1,
+    "master_records": 1,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "docs\\examples\\memorybank_enriched_v2.json",
+    "bytes": 150136,
+    "sha256": "9340b1e91ca6da5fcb9f0104072bbd580efe84219de01dfe5f98d603f7ca1364",
+    "records": 1,
+    "master_records": 1,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "schemas\\master_dataset_v2.schema.json",
+    "bytes": 9181,
+    "sha256": "d7a4550855af10943ff938f5fd5cbb391811599bef39aeb4c8db48ee0bfbd31b",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  },
+  {
+    "path": "schemas\\master_dataset_v2_enriched.schema.json",
+    "bytes": 15834,
+    "sha256": "9df1843350f1be68dd2bcf1994a6b4e52a698e8d068f8a601ac071565a02ec6a",
+    "records": 1,
+    "master_records": 0,
+    "master_validation_errors": 0,
+    "status": "parsed"
+  }
+]

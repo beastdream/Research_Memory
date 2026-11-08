@@ -1,0 +1,66 @@
+{
+  "report_timestamp": "2026-10-29T08:10:17.769416+00:00",
+  "total_records": 306,
+  "enriched_v2_records": 306,
+  "verified_doi_rate": "100%",
+  "before_repair": {
+    "empty_abstracts": 24,
+    "single_or_zero_authors": 33,
+    "complete_full_text": 259,
+    "abstracts_recovered": 0,
+    "authors_expanded": 3,
+    "full_text_gained": 4
+  },
+  "after_repair": {
+    "empty_abstracts": 24,
+    "abstract_coverage_pct": 92.16,
+    "single_author_records": 29,
+    "zero_author_records": 1,
+    "author_roster_coverage_pct": 90.2,
+    "full_text_status": {
+      "complete": 263,
+      "partial": 11,
+      "metadata_only": 32
+    },
+    "pdf_inventory": {
+      "multi_page_pdf": 63,
+      "one_page_preview": 93,
+      "missing_pdf": 150
+    }
+  },
+  "topic_distribution": {
+    "Large Language Models": 62,
+    "RAG and Information Retrieval": 72,
+    "AI Agents and Long-Term Memory": 72,
+    "Hallucination and Faithfulness": 50,
+    "Scientific NLP and QA": 50
+  },
+  "year_distribution": {
+    "2026": 195,
+    "2025": 42,
+    "2024": 20,
+    "2023": 10,
+    "2022": 8,
+    "2021": 7,
+    "2020": 11,
+    "2019": 5,
+    "2018": 8
+  },
+  "top_journals": {
+    "Knowledge-Based Systems": 19,
+    "Neurocomputing": 18,
+    "Procedia Computer Science": 14,
+    "Expert Systems with Applications": 13,
+    "Natural Language Processing Journal": 12,
+    "Information Processing & Management": 7,
+    "Pattern Recognition": 6,
+    "Information Sciences": 5,
+    "Advanced Engineering Informatics": 5,
+    "Robotics and Autonomous Systems": 5
+  },
+  "compliance": {
+    "schema_valid": true,
+    "canonical_id_consistent": true,
+    "invariants_verified": true
+  }
+}
