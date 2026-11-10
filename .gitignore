@@ -26,5 +26,8 @@ datasets/sciencedirect/retrieval/*.sqlite
 datasets/sciencedirect/retrieval/*.jsonl
 datasets/sciencedirect/benchmark/embeddings/
 reports/test_report.*
+colab_benchmark_bundle.zip
+colab_benchmark_results.zip
+
 
 

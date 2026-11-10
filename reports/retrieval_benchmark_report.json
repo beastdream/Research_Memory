@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "timestamp": "2026-11-08T09:42:59.940129+00:00",
+    "timestamp": "2026-11-09T11:06:32.490641+00:00",
     "device": "cuda",
-    "eval_scope": "candidate_pool",
-    "pool_size": 1000,
-    "num_papers": 126,
-    "num_corpus_chunks": 1000,
+    "eval_scope": "full",
+    "pool_size": 21538,
+    "num_papers": 297,
+    "num_corpus_chunks": 21538,
     "num_queries": 125,
     "num_topics": 5,
     "num_qrels": 691,
@@ -19,175 +19,175 @@
     {
       "model_name": "BAAI/bge-base-en-v1.5",
       "macro_metrics": {
-        "recall_at_5": 0.6984761904761904,
-        "recall_at_10": 0.8469142857142857,
-        "recall_at_20": 0.8756571428571428,
-        "mrr_at_10": 0.8859333333333334,
-        "ndcg_at_10": 0.7296653488810438
+        "recall_at_5": 0.11241904761904763,
+        "recall_at_10": 0.17866666666666664,
+        "recall_at_20": 0.3358285714285714,
+        "mrr_at_10": 0.2530253968253968,
+        "ndcg_at_10": 0.12199724028327356
       },
       "topic_metrics": {
         "AI Agents and Long-Term Memory": {
           "num_queries": 25,
-          "recall_at_5": 0.6157142857142858,
-          "recall_at_10": 0.7557142857142857,
-          "recall_at_20": 0.7714285714285714,
-          "mrr_at_10": 0.7706666666666666,
-          "ndcg_at_10": 0.6757993058759433
+          "recall_at_5": 0.0941904761904762,
+          "recall_at_10": 0.15219047619047618,
+          "recall_at_20": 0.3182857142857143,
+          "mrr_at_10": 0.1937142857142857,
+          "ndcg_at_10": 0.1171525505716378
         },
         "RAG and Information Retrieval": {
           "num_queries": 25,
-          "recall_at_5": 0.614,
-          "recall_at_10": 0.8219047619047619,
-          "recall_at_20": 0.8819047619047619,
-          "mrr_at_10": 0.885,
-          "ndcg_at_10": 0.6732052410423414
+          "recall_at_5": 0.07609523809523809,
+          "recall_at_10": 0.1637142857142857,
+          "recall_at_20": 0.27685714285714286,
+          "mrr_at_10": 0.24377777777777773,
+          "ndcg_at_10": 0.10303514706584682
         },
         "Large Language Models": {
           "num_queries": 25,
-          "recall_at_5": 0.7031428571428573,
-          "recall_at_10": 0.8345714285714285,
-          "recall_at_20": 0.8797142857142858,
-          "mrr_at_10": 0.89,
-          "ndcg_at_10": 0.72800948009791
+          "recall_at_5": 0.08571428571428572,
+          "recall_at_10": 0.1514285714285714,
+          "recall_at_20": 0.2757142857142857,
+          "mrr_at_10": 0.23004761904761903,
+          "ndcg_at_10": 0.09677634215425922
         },
         "Hallucination and Faithfulness": {
           "num_queries": 25,
-          "recall_at_5": 0.7033333333333335,
-          "recall_at_10": 0.8623809523809524,
-          "recall_at_20": 0.8852380952380952,
-          "mrr_at_10": 0.924,
-          "ndcg_at_10": 0.7380508065999501
+          "recall_at_5": 0.12228571428571428,
+          "recall_at_10": 0.18076190476190476,
+          "recall_at_20": 0.3068571428571429,
+          "mrr_at_10": 0.32171428571428573,
+          "ndcg_at_10": 0.1254484654443192
         },
         "Scientific NLP and QA": {
           "num_queries": 25,
-          "recall_at_5": 0.8561904761904762,
-          "recall_at_10": 0.96,
-          "recall_at_20": 0.96,
-          "mrr_at_10": 0.96,
-          "ndcg_at_10": 0.8332619107890745
+          "recall_at_5": 0.18380952380952378,
+          "recall_at_10": 0.24523809523809526,
+          "recall_at_20": 0.5014285714285713,
+          "mrr_at_10": 0.2758730158730158,
+          "ndcg_at_10": 0.1675736961803049
         }
       },
       "timing": {
-        "corpus_encoding_seconds": 231.61,
-        "query_encoding_seconds": 3.008,
-        "retrieval_seconds": 0.0121,
-        "total_eval_seconds": 234.7
+        "corpus_encoding_seconds": 150.27,
+        "query_encoding_seconds": 0.101,
+        "retrieval_seconds": 0.0624,
+        "total_eval_seconds": 150.53
       }
     },
     {
       "model_name": "allenai/specter2_base",
       "macro_metrics": {
-        "recall_at_5": 0.32215238095238097,
-        "recall_at_10": 0.4301523809523809,
-        "recall_at_20": 0.5520380952380952,
-        "mrr_at_10": 0.6401301587301588,
-        "ndcg_at_10": 0.3625106110462769
+        "recall_at_5": 0.021809523809523806,
+        "recall_at_10": 0.06055238095238094,
+        "recall_at_20": 0.11792380952380953,
+        "mrr_at_10": 0.07117142857142857,
+        "ndcg_at_10": 0.03829170192952008
       },
       "topic_metrics": {
         "AI Agents and Long-Term Memory": {
           "num_queries": 25,
-          "recall_at_5": 0.2480952380952381,
-          "recall_at_10": 0.33476190476190476,
-          "recall_at_20": 0.4863809523809524,
-          "mrr_at_10": 0.6301587301587301,
-          "ndcg_at_10": 0.3034999477370948
+          "recall_at_5": 0.012380952380952381,
+          "recall_at_10": 0.049523809523809526,
+          "recall_at_20": 0.11238095238095237,
+          "mrr_at_10": 0.1034920634920635,
+          "ndcg_at_10": 0.03849855227500333
         },
         "RAG and Information Retrieval": {
           "num_queries": 25,
-          "recall_at_5": 0.2774285714285714,
-          "recall_at_10": 0.3683809523809524,
-          "recall_at_20": 0.5143809523809524,
-          "mrr_at_10": 0.5906666666666667,
-          "ndcg_at_10": 0.3192132838386881
+          "recall_at_5": 0.024761904761904763,
+          "recall_at_10": 0.04476190476190476,
+          "recall_at_20": 0.0976190476190476,
+          "mrr_at_10": 0.07233333333333333,
+          "ndcg_at_10": 0.03668246921493454
         },
         "Large Language Models": {
           "num_queries": 25,
-          "recall_at_5": 0.36257142857142854,
-          "recall_at_10": 0.46542857142857147,
-          "recall_at_20": 0.5605714285714286,
-          "mrr_at_10": 0.66,
-          "ndcg_at_10": 0.4098565598553132
+          "recall_at_5": 0.02142857142857143,
+          "recall_at_10": 0.06285714285714285,
+          "recall_at_20": 0.13514285714285712,
+          "mrr_at_10": 0.05504761904761905,
+          "ndcg_at_10": 0.032298296100025485
         },
         "Hallucination and Faithfulness": {
           "num_queries": 25,
-          "recall_at_5": 0.24885714285714286,
-          "recall_at_10": 0.35647619047619045,
-          "recall_at_20": 0.47600000000000003,
-          "mrr_at_10": 0.5418253968253969,
-          "ndcg_at_10": 0.29956751175390495
+          "recall_at_5": 0.02142857142857143,
+          "recall_at_10": 0.059904761904761905,
+          "recall_at_20": 0.10066666666666667,
+          "mrr_at_10": 0.0840952380952381,
+          "ndcg_at_10": 0.044161780825933084
         },
         "Scientific NLP and QA": {
           "num_queries": 25,
-          "recall_at_5": 0.4738095238095238,
-          "recall_at_10": 0.6257142857142857,
-          "recall_at_20": 0.7228571428571429,
-          "mrr_at_10": 0.778,
-          "ndcg_at_10": 0.4804157520463832
+          "recall_at_5": 0.02904761904761904,
+          "recall_at_10": 0.08571428571428572,
+          "recall_at_20": 0.1438095238095238,
+          "mrr_at_10": 0.040888888888888884,
+          "ndcg_at_10": 0.03981741123170401
         }
       },
       "timing": {
-        "corpus_encoding_seconds": 233.71,
-        "query_encoding_seconds": 2.54,
-        "retrieval_seconds": 0.0184,
-        "total_eval_seconds": 236.31
+        "corpus_encoding_seconds": 152.75,
+        "query_encoding_seconds": 0.086,
+        "retrieval_seconds": 0.0595,
+        "total_eval_seconds": 152.97
       }
     },
     {
       "model_name": "facebook/contriever",
       "macro_metrics": {
-        "recall_at_5": 0.4474666666666666,
-        "recall_at_10": 0.5901904761904762,
-        "recall_at_20": 0.7066857142857144,
-        "mrr_at_10": 0.7615174603174601,
-        "ndcg_at_10": 0.49214621441689577
+        "recall_at_5": 0.038666666666666655,
+        "recall_at_10": 0.08367619047619047,
+        "recall_at_20": 0.14815238095238095,
+        "mrr_at_10": 0.09788253968253967,
+        "ndcg_at_10": 0.06145076596153574
       },
       "topic_metrics": {
         "AI Agents and Long-Term Memory": {
           "num_queries": 25,
-          "recall_at_5": 0.4203809523809523,
-          "recall_at_10": 0.5521904761904762,
-          "recall_at_20": 0.6631428571428571,
-          "mrr_at_10": 0.8096666666666666,
-          "ndcg_at_10": 0.4623567952622553
+          "recall_at_5": 0.031428571428571424,
+          "recall_at_10": 0.09047619047619047,
+          "recall_at_20": 0.17714285714285716,
+          "mrr_at_10": 0.12119047619047618,
+          "ndcg_at_10": 0.06792593155842756
         },
         "RAG and Information Retrieval": {
           "num_queries": 25,
-          "recall_at_5": 0.3927619047619047,
-          "recall_at_10": 0.49942857142857144,
-          "recall_at_20": 0.6592380952380953,
-          "mrr_at_10": 0.7025396825396826,
-          "ndcg_at_10": 0.4159597587734522
+          "recall_at_5": 0.03904761904761904,
+          "recall_at_10": 0.05904761904761904,
+          "recall_at_20": 0.10609523809523808,
+          "mrr_at_10": 0.08466666666666667,
+          "ndcg_at_10": 0.05109495052054767
         },
         "Large Language Models": {
           "num_queries": 25,
-          "recall_at_5": 0.4368571428571429,
-          "recall_at_10": 0.6248571428571429,
-          "recall_at_20": 0.7385714285714287,
-          "mrr_at_10": 0.6573333333333332,
-          "ndcg_at_10": 0.49973564252199004
+          "recall_at_5": 0.015714285714285715,
+          "recall_at_10": 0.052857142857142846,
+          "recall_at_20": 0.12228571428571426,
+          "mrr_at_10": 0.04311111111111111,
+          "ndcg_at_10": 0.026904355734405794
         },
         "Hallucination and Faithfulness": {
           "num_queries": 25,
-          "recall_at_5": 0.37114285714285716,
-          "recall_at_10": 0.5011428571428571,
-          "recall_at_20": 0.6186666666666666,
-          "mrr_at_10": 0.7473333333333333,
-          "ndcg_at_10": 0.43132376279167195
+          "recall_at_5": 0.0638095238095238,
+          "recall_at_10": 0.09695238095238094,
+          "recall_at_20": 0.16619047619047617,
+          "mrr_at_10": 0.16700000000000004,
+          "ndcg_at_10": 0.0869921685882305
         },
         "Scientific NLP and QA": {
           "num_queries": 25,
-          "recall_at_5": 0.6161904761904762,
-          "recall_at_10": 0.7733333333333333,
-          "recall_at_20": 0.8538095238095238,
-          "mrr_at_10": 0.8907142857142857,
-          "ndcg_at_10": 0.6513551127351093
+          "recall_at_5": 0.04333333333333333,
+          "recall_at_10": 0.11904761904761903,
+          "recall_at_20": 0.16904761904761906,
+          "mrr_at_10": 0.07344444444444444,
+          "ndcg_at_10": 0.07433642340606718
         }
       },
       "timing": {
-        "corpus_encoding_seconds": 254.78,
-        "query_encoding_seconds": 2.63,
-        "retrieval_seconds": 0.0109,
-        "total_eval_seconds": 257.47
+        "corpus_encoding_seconds": 158.01,
+        "query_encoding_seconds": 0.089,
+        "retrieval_seconds": 0.0653,
+        "total_eval_seconds": 158.23
       }
     }
   ]
